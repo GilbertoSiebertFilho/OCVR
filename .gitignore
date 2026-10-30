@@ -1,0 +1,34 @@
+# OCVR: code and documentation only. Grower data (workspace\, shapefiles, rasters, reports) must never reach GitHub,
+# so everything is ignored and only the app's own folders and files are let back in.
+*
+
+!.gitignore
+!README.md
+!requirements.txt
+!pytest.ini
+!run_app.bat
+!setup.bat
+
+!.streamlit/
+.streamlit/*
+!.streamlit/config.toml
+
+!app/
+!app/**
+!assets/
+!assets/**
+!docs/
+!docs/**
+!engine/
+!engine/**
+!tests/
+!tests/**
+!tools/
+!tools/**
+
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# verbatim excerpts of papers and one grower name: kept on this computer only
+docs/literature/evidence_by_rule.json

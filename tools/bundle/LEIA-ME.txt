@@ -1,0 +1,34 @@
+OLDS COLLEGE APPS - OCVR, OCCD e NDVI Map Viewer
+=================================================
+
+Instalar num computador novo (uma vez so):
+
+  1. Descompacte OC_Apps.zip em C:\  (fica C:\OC_Apps). Evite a area de trabalho, Documentos e
+     o OneDrive: o OneDrive sincroniza os milhares de arquivos do ambiente e deixa tudo lento.
+  2. Dois cliques em C:\OC_Apps\INSTALAR.bat.
+     - Se o computador nao tiver Python, ele baixa e instala o Python 3.14.3 oficial (python.org),
+       so para este usuario, sem precisar de administrador.
+     - Cria o ambiente .venv com as versoes testadas dos pacotes (constraints.txt), 3-8 minutos.
+     - Cria tres atalhos na area de trabalho.
+  3. Abra pelos atalhos: "OCVR - taxa variavel", "OCCD - limpeza de colheita", "NDVI Map Viewer".
+     Cada app abre no navegador; feche a janela preta para parar o app.
+       OCVR  http://localhost:8501
+       OCCD  http://localhost:8502
+     Os dois podem ficar abertos ao mesmo tempo.
+
+O que vem no pacote
+  OCVR\      o app de economia da taxa variavel, com os projetos salvos (Trials 19, 22, 29) e seus
+             arquivos de entrada; docs\literature\ tem os PDFs de referencias (ingles e portugues).
+  OCCD\      o app de limpeza de mapas de colheita (sem a pasta workspace: os campos salvos ficam no
+             computador antigo, 8,6 GB).
+  NDVIMAP\   o visualizador de NDVI (Sentinel-2) que o OCVR usa para baixar as imagens.
+
+Copernicus (para baixar NDVI novo)
+  As credenciais nao vem no pacote. Na primeira vez, abra "NDVI Map Viewer", painel 1, e salve o
+  client id e o secret. Os NDVI ja baixados dos projetos salvos vem junto, entao eles rodam sem isso.
+
+Problemas
+  - "Python was not found ... Microsoft Store": o Windows tem so o atalho da loja. INSTALAR.bat
+    resolve isso instalando o Python de verdade; rode INSTALAR.bat (nao os outros .bat) primeiro.
+  - A instalacao dos pacotes falhou: rode INSTALAR.bat de novo (ele continua de onde parou).
+  - Rodar INSTALAR.bat de novo a qualquer momento repara o ambiente.

@@ -1,0 +1,2657 @@
+{
+ "checked": 147,
+ "verified": 147,
+ "log": {
+  "Abadie 2023": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": false,
+    "author_ok": true,
+    "year_note": "online-first vs print year"
+   },
+   "record": {
+    "title": "When Should You Adjust Standard Errors for Clustering?",
+    "year": 2022,
+    "container": "The Quarterly Journal of Economics",
+    "first_author": "Abadie",
+    "volume": "138",
+    "pages": "1-35",
+    "source": "crossref"
+   },
+   "doi": "10.1093/qje/qjac038"
+  },
+  "Ackello-Ogutu 1985": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Testing a von Liebig Crop Response Function against Polynomial Specifications",
+    "year": 1985,
+    "container": "American Journal of Agricultural Economics",
+    "first_author": "Ackello-Ogutu",
+    "volume": "67",
+    "pages": "873",
+    "source": "openalex"
+   },
+   "doi": "10.2307/1241829"
+  },
+  "Alesso 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Experimental Designs and Estimation Methods for On‐Farm Research: A Simulation Study of Corn Yields at Field Scale",
+    "year": 2019,
+    "container": "Agronomy Journal",
+    "first_author": "Alesso",
+    "volume": "111",
+    "pages": "2724-2735",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2019.03.0142"
+  },
+  "Alesso 2021": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Design of on‐farm precision experiments to estimate site‐specific crop responses",
+    "year": 2021,
+    "container": "Agronomy Journal",
+    "first_author": "Alesso",
+    "volume": "113",
+    "pages": "1366-1380",
+    "source": "crossref"
+   },
+   "doi": "10.1002/agj2.20572"
+  },
+  "Ali 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Assessing Multiple Years’ Spatial Variability of Crop Yields Using Satellite Vegetation Indices",
+    "year": 2019,
+    "container": "Remote Sensing",
+    "first_author": "Ali",
+    "volume": "11",
+    "pages": "2384",
+    "source": "crossref"
+   },
+   "doi": "10.3390/rs11202384"
+  },
+  "Altman 1995": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Statistics notes: Absence of evidence is not evidence of absence",
+    "year": 1995,
+    "container": "BMJ",
+    "first_author": "Altman",
+    "volume": "311",
+    "pages": "485",
+    "source": "crossref"
+   },
+   "doi": "10.1136/bmj.311.7003.485"
+  },
+  "Angadi 2003": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Yield Adjustment by Canola Grown at Different Plant Populations under Semiarid Conditions",
+    "year": 2003,
+    "container": "Crop Science",
+    "first_author": "Angadi",
+    "volume": "43",
+    "pages": "1358-1366",
+    "source": "crossref"
+   },
+   "doi": "10.2135/cropsci2003.1358"
+  },
+  "Anselin 2004": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "A Spatial Econometric Approach to the Economics of Site‐Specific Nitrogen Management in Corn Production",
+    "year": 2004,
+    "container": "American Journal of Agricultural Economics",
+    "first_author": "Anselin",
+    "volume": "86",
+    "pages": "675-687",
+    "source": "crossref"
+   },
+   "doi": "10.1111/j.0002-9092.2004.00610.x"
+  },
+  "Arslan 2002": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Grain Yield Mapping: Yield Sensing, Yield Reconstruction, and Errors",
+    "year": 2002,
+    "container": "Precision Agriculture",
+    "first_author": "Arslan",
+    "volume": "3",
+    "pages": "135-154",
+    "source": "crossref"
+   },
+   "doi": "10.1023/A:1013819502827"
+  },
+  "Athey 2016": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Recursive partitioning for heterogeneous causal effects",
+    "year": 2016,
+    "container": "Proceedings of the National Academy of Sciences",
+    "first_author": "Athey",
+    "volume": "113",
+    "pages": "7353-7360",
+    "source": "crossref"
+   },
+   "doi": "10.1073/pnas.1510489113"
+  },
+  "Babcock 1992": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "The Effects of Uncertainty on Optimal Nitrogen Applications",
+    "year": 1992,
+    "container": "Review of Agricultural Economics",
+    "first_author": "Babcock",
+    "volume": "14",
+    "pages": "271",
+    "source": "crossref"
+   },
+   "doi": "10.2307/1349506"
+  },
+  "Bachmaier 2012": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Sources of inaccuracy when estimating economically optimum N fertilizer rates",
+    "year": 2012,
+    "container": "Agricultural Sciences",
+    "first_author": "Bachmaier",
+    "volume": "03",
+    "pages": "331-338",
+    "source": "crossref"
+   },
+   "doi": "10.4236/as.2012.33037"
+  },
+  "Basso 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Yield stability analysis reveals sources of large-scale nitrogen loss from the US Midwest",
+    "year": 2019,
+    "container": "Scientific Reports",
+    "first_author": "Basso",
+    "volume": "9",
+    "pages": null,
+    "source": "crossref"
+   },
+   "doi": "10.1038/s41598-019-42271-1"
+  },
+  "Beres 2016": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Winter Wheat Cropping System Response to Seed Treatments, Seed Size, and Sowing Density",
+    "year": 2016,
+    "container": "Agronomy Journal",
+    "first_author": "Beres",
+    "volume": "108",
+    "pages": "1101-1111",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2015.0497"
+  },
+  "Blackmore 2000": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "The interpretation of trends from multiple yield maps",
+    "year": 2000,
+    "container": "Computers and Electronics in Agriculture",
+    "first_author": "Blackmore",
+    "volume": "26",
+    "pages": "37-51",
+    "source": "crossref"
+   },
+   "doi": "10.1016/S0168-1699(99)00075-7"
+  },
+  "Blackmore 2003": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "The Analysis of Spatial and Temporal Trends in Yield Map Data over Six Years",
+    "year": 2003,
+    "container": "Biosystems Engineering",
+    "first_author": "Blackmore",
+    "volume": "84",
+    "pages": "455-466",
+    "source": "crossref"
+   },
+   "doi": "10.1016/S1537-5110(03)00038-2"
+  },
+  "Boydell 2002": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Identifying Potential Within-Field Management Zones from Cotton-Yield Estimates",
+    "year": 2002,
+    "container": "Precision Agriculture",
+    "first_author": "Boydell",
+    "volume": "3",
+    "pages": "9-23",
+    "source": "crossref"
+   },
+   "doi": "10.1023/A:1013318002609"
+  },
+  "Bramley 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Farmer attitudes to the use of sensors and automation in fertilizer decision-making: nitrogen fertilization in the Australian grains sector",
+    "year": 2019,
+    "container": "Precision Agriculture",
+    "first_author": "Bramley",
+    "volume": "20",
+    "pages": "157-175",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-018-9589-y"
+  },
+  "Bullock 1994": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Quadratic and Quadratic‐Plus‐Plateau Models for Predicting Optimal Nitrogen Rate of Corn: A Comparison",
+    "year": 1994,
+    "container": "Agronomy Journal",
+    "first_author": "Bullock",
+    "volume": "86",
+    "pages": "191-195",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj1994.00021962008600010033x"
+  },
+  "Bullock 2000": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "From Agronomic Research to Farm Management Guidelines: A Primer on the Economics of Information and Precision Technology",
+    "year": 2000,
+    "container": "Precision Agriculture",
+    "first_author": "Bullock",
+    "volume": "2",
+    "pages": "71-101",
+    "source": "crossref"
+   },
+   "doi": "10.1023/A:1009988617622"
+  },
+  "Bullock 2002": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Adding value to spatially managed inputs by understanding site‐specific yield response",
+    "year": 2002,
+    "container": "Agricultural Economics",
+    "first_author": "Bullock",
+    "volume": "27",
+    "pages": "233-245",
+    "source": "crossref"
+   },
+   "doi": "10.1111/j.1574-0862.2002.tb00119.x"
+  },
+  "Bullock 2009": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "The Value of Variable Rate Technology: An Information‐Theoretic Approach",
+    "year": 2009,
+    "container": "American Journal of Agricultural Economics",
+    "first_author": "Bullock",
+    "volume": "91",
+    "pages": "209-223",
+    "source": "crossref"
+   },
+   "doi": "10.1111/j.1467-8276.2008.01157.x"
+  },
+  "Bullock 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "The Data‐Intensive Farm Management Project: Changing Agronomic Research Through On‐Farm Precision Experimentation",
+    "year": 2019,
+    "container": "Agronomy Journal",
+    "first_author": "Bullock",
+    "volume": "111",
+    "pages": "2736-2746",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2019.03.0165"
+  },
+  "Bullock 2020": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "The value of conducting on-farm field trials using precision agriculture technology: a theory and simulations",
+    "year": 2020,
+    "container": "Precision Agriculture",
+    "first_author": "Bullock",
+    "volume": "21",
+    "pages": "1027-1044",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-019-09706-1"
+  },
+  "Cameron 2008": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Bootstrap-Based Improvements for Inference with Clustered Errors",
+    "year": 2008,
+    "container": "Review of Economics and Statistics",
+    "first_author": "Cameron",
+    "volume": "90",
+    "pages": "414-427",
+    "source": "crossref"
+   },
+   "doi": "10.1162/rest.90.3.414"
+  },
+  "Cameron 2015": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "A Practitioner’s Guide to Cluster-Robust Inference",
+    "year": 2015,
+    "container": "Journal of Human Resources",
+    "first_author": "Colin Cameron",
+    "volume": "50",
+    "pages": "317-372",
+    "source": "crossref"
+   },
+   "doi": "10.3368/jhr.50.2.317"
+  },
+  "Campbell 1977": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "EFFECTS OF FERTILIZER N AND SOIL MOISTURE ON YIELD, YIELD COMPONENTS, PROTEIN CONTENT AND N ACCUMULATION IN THE ABOVEGROUND PARTS OF SPRING WHEAT",
+    "year": 1977,
+    "container": "Canadian Journal of Soil Science",
+    "first_author": "CAMPBELL",
+    "volume": "57",
+    "pages": "311-327",
+    "source": "crossref"
+   },
+   "doi": "10.4141/cjss77-036"
+  },
+  "Cerrato 1990": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Comparison of Models for Describing; Corn Yield Response to Nitrogen Fertilizer",
+    "year": 1990,
+    "container": "Agronomy Journal",
+    "first_author": "Cerrato",
+    "volume": "82",
+    "pages": "138-143",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj1990.00021962008200010030x"
+  },
+  "Chernozhukov 2018": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Double/debiased machine learning for treatment and structural parameters",
+    "year": 2018,
+    "container": "The Econometrics Journal",
+    "first_author": "Chernozhukov",
+    "volume": "21",
+    "pages": "C1-C68",
+    "source": "crossref"
+   },
+   "doi": "10.1111/ectj.12097"
+  },
+  "Chipanshi 2015": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Evaluation of the Integrated Canadian Crop Yield Forecaster (ICCYF) model for in-season prediction of crop yield across the Canadian agricultural landscape",
+    "year": 2015,
+    "container": "Agricultural and Forest Meteorology",
+    "first_author": "Chipanshi",
+    "volume": "206",
+    "pages": "137-150",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.agrformet.2015.03.007"
+  },
+  "Cho 2021": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Proposed Method for Statistical Analysis of On-Farm Single Strip Treatment Trials",
+    "year": 2021,
+    "container": "Agronomy",
+    "first_author": "Cho",
+    "volume": "11",
+    "pages": "2042",
+    "source": "crossref"
+   },
+   "doi": "10.3390/agronomy11102042"
+  },
+  "Chung 2002": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "DETERMINING YIELD MONITORING SYSTEM DELAY TIME WITH GEOSTATISTICAL AND DATA SEGMENTATION APPROACHES",
+    "year": 2002,
+    "container": "Transactions of the ASAE",
+    "first_author": "S. O. Chung",
+    "volume": "45",
+    "pages": null,
+    "source": "crossref"
+   },
+   "doi": "10.13031/2013.9938"
+  },
+  "Colaço 2014": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "A model to analyze as-applied reports from variable rate applications",
+    "year": 2014,
+    "container": "Precision Agriculture",
+    "first_author": "Colaço",
+    "volume": "15",
+    "pages": "304-320",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-014-9358-5"
+  },
+  "Colaço 2018": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Do crop sensors promote improved nitrogen management in grain crops?",
+    "year": 2018,
+    "container": "Field Crops Research",
+    "first_author": "Colaço",
+    "volume": "218",
+    "pages": "126-140",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.fcr.2018.01.007"
+  },
+  "Colaço 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Site–Year Characteristics Have a Critical Impact on Crop Sensor Calibrations for Nitrogen Recommendations",
+    "year": 2019,
+    "container": "Agronomy Journal",
+    "first_author": "Colaço",
+    "volume": "111",
+    "pages": "2047-2059",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2018.11.0726"
+  },
+  "Collier 2021": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Optimal Agronomics Increase Grain Yield and Grain Yield Stability of Ultra-Early Wheat Seeding Systems",
+    "year": 2021,
+    "container": "Agronomy",
+    "first_author": "Collier",
+    "volume": "11",
+    "pages": "240",
+    "source": "crossref"
+   },
+   "doi": "10.3390/agronomy11020240"
+  },
+  "de Lara 2023": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Predicting site-specific economic optimal nitrogen rate using machine learning methods and on-farm precision experimentation",
+    "year": 2023,
+    "container": "Precision Agriculture",
+    "first_author": "de Lara",
+    "volume": "24",
+    "pages": "1792-1812",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-023-10018-8"
+  },
+  "Dhakal 2021": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Crop yield response functions in nutrient application: A review",
+    "year": 2021,
+    "container": "Agronomy Journal",
+    "first_author": "Dhakal",
+    "volume": "113",
+    "pages": "5222-5234",
+    "source": "crossref"
+   },
+   "doi": "10.1002/agj2.20863"
+  },
+  "Diker 2004": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Frequency Analysis of Yield for Delineating Yield Response Zones",
+    "year": 2004,
+    "container": "Precision Agriculture",
+    "first_author": "Diker",
+    "volume": "5",
+    "pages": "435-444",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-004-5318-9"
+  },
+  "Dobermann 2003": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Classification of Crop Yield Variability in Irrigated Production Fields",
+    "year": 2003,
+    "container": "Agronomy Journal",
+    "first_author": "Dobermann",
+    "volume": "95",
+    "pages": "1105-1120",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2003.1105"
+  },
+  "dos Santos 2025": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "A comparative study of yield monitor data processing methods for on‐farm agronomic trials",
+    "year": 2025,
+    "container": "Agronomy Journal",
+    "first_author": "Santos",
+    "volume": "117",
+    "pages": null,
+    "source": "crossref"
+   },
+   "doi": "10.1002/agj2.70168"
+  },
+  "Drummond 1999": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "COMBINE HARVEST AREA DETERMINATION BY VECTOR PROCESSING OF GPS POSITION DATA",
+    "year": 1999,
+    "container": "Transactions of the ASAE",
+    "first_author": "S. T. Drummond",
+    "volume": "42",
+    "pages": "1221-1228",
+    "source": "crossref"
+   },
+   "doi": "10.13031/2013.13287"
+  },
+  "Drusch 2012": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Sentinel-2: ESA's Optical High-Resolution Mission for GMES Operational Services",
+    "year": 2012,
+    "container": "Remote Sensing of Environment",
+    "first_author": "Drusch",
+    "volume": "120",
+    "pages": "25-36",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.rse.2011.11.026"
+  },
+  "Erdle 2011": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Comparison of active and passive spectral sensors in discriminating biomass parameters and nitrogen status in wheat cultivars",
+    "year": 2011,
+    "container": "Field Crops Research",
+    "first_author": "Erdle",
+    "volume": "124",
+    "pages": "74-84",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.fcr.2011.06.007"
+  },
+  "Fast 2024": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Integrating enhanced efficiency fertilizers and nitrogen rates to improve Canada Western Red Spring wheat",
+    "year": 2024,
+    "container": "Canadian Journal of Plant Science",
+    "first_author": "Fast",
+    "volume": "104",
+    "pages": "144-160",
+    "source": "crossref"
+   },
+   "doi": "10.1139/cjps-2023-0095"
+  },
+  "Field 2007": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Bootstrapping Clustered Data",
+    "year": 2007,
+    "container": "Journal of the Royal Statistical Society Series B: Statistical Methodology",
+    "first_author": "Field",
+    "volume": "69",
+    "pages": "369-390",
+    "source": "crossref"
+   },
+   "doi": "10.1111/j.1467-9868.2007.00593.x"
+  },
+  "Fisher 1958": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "On Grouping for Maximum Homogeneity",
+    "year": 1958,
+    "container": "Journal of the American Statistical Association",
+    "first_author": "Fisher",
+    "volume": "53",
+    "pages": "789-798",
+    "source": "crossref"
+   },
+   "doi": "10.1080/01621459.1958.10501479"
+  },
+  "Franzen 2016": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Algorithms for In‐Season Nutrient Management in Cereals",
+    "year": 2016,
+    "container": "Agronomy Journal",
+    "first_author": "Franzen",
+    "volume": "108",
+    "pages": "1775-1781",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2016.01.0041"
+  },
+  "Fridgen 2004": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Management Zone Analyst (MZA)",
+    "year": 2004,
+    "container": "Agronomy Journal",
+    "first_author": "Fridgen",
+    "volume": "96",
+    "pages": "100-108",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2004.1000"
+  },
+  "Fulton 2013": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "A method to generate and use as-applied surfaces to evaluate variable-rate fertilizer applications",
+    "year": 2013,
+    "container": "Precision Agriculture",
+    "first_author": "Fulton",
+    "volume": "14",
+    "pages": "184-200",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-012-9286-1"
+  },
+  "Gardner 2021": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "An economic evaluation of site-specific input application Rx maps: evaluation framework and case study",
+    "year": 2021,
+    "container": "Precision Agriculture",
+    "first_author": "Gardner",
+    "volume": "22",
+    "pages": "1304-1316",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-021-09785-z"
+  },
+  "Gauci 2024": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Precision of grain yield monitors for use in on-farm research strip trials",
+    "year": 2024,
+    "container": "Precision Agriculture",
+    "first_author": "Gauci",
+    "volume": "25",
+    "pages": "771-784",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-023-10092-y"
+  },
+  "Gavioli 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Identification of management zones in precision agriculture: An evaluation of alternative cluster analysis methods",
+    "year": 2019,
+    "container": "Biosystems Engineering",
+    "first_author": "Gavioli",
+    "volume": "181",
+    "pages": "86-102",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.biosystemseng.2019.02.019"
+  },
+  "Georgi 2018": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Automatic delineation algorithm for site-specific management zones based on satellite remote sensing data",
+    "year": 2018,
+    "container": "Precision Agriculture",
+    "first_author": "Georgi",
+    "volume": "19",
+    "pages": "684-707",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-017-9549-y"
+  },
+  "Grant 2012": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Crop yield and nitrogen concentration with controlled release urea and split applications of nitrogen as compared to non-coated urea applied at seeding",
+    "year": 2012,
+    "container": "Field Crops Research",
+    "first_author": "Grant",
+    "volume": "127",
+    "pages": "170-180",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.fcr.2011.11.002"
+  },
+  "Griffin 2020": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Modeling local and global spatial correlation in field‐scale experiments",
+    "year": 2020,
+    "container": "Agronomy Journal",
+    "first_author": "Griffin",
+    "volume": "112",
+    "pages": "2708-2721",
+    "source": "crossref"
+   },
+   "doi": "10.1002/agj2.20266"
+  },
+  "Han 1997": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "A BITMAP METHOD FOR DETERMINING EFFECTIVE COMBINE CUT WIDTH IN YIELD MAPPING",
+    "year": 1997,
+    "container": "Transactions of the ASAE",
+    "first_author": "S. Han",
+    "volume": "40",
+    "pages": "485-490",
+    "source": "crossref"
+   },
+   "doi": "10.13031/2013.21267"
+  },
+  "Harker 2012": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "High-yield no-till canola production on the Canadian prairies",
+    "year": 2012,
+    "container": "Canadian Journal of Plant Science",
+    "first_author": "N. Harker",
+    "volume": "92",
+    "pages": "221-233",
+    "source": "crossref"
+   },
+   "doi": "10.4141/cjps2011-125"
+  },
+  "Harker 2017": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": false,
+    "author_ok": true,
+    "year_note": "online-first vs print year"
+   },
+   "record": {
+    "title": "Canola growth, production and quality are influenced by seed size and seeding rate",
+    "year": 2016,
+    "container": "Canadian Journal of Plant Science",
+    "first_author": "Harker",
+    "volume": null,
+    "pages": null,
+    "source": "crossref"
+   },
+   "doi": "10.1139/cjps-2016-0215"
+  },
+  "Harker 2017a": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": false,
+    "author_ok": true,
+    "year_note": "online-first vs print year"
+   },
+   "record": {
+    "title": "Nitrogen and Seeding Rate versus Novel Inputs for Western Canada Canola Production",
+    "year": 2016,
+    "container": "Canadian Journal of Plant Science",
+    "first_author": "Harker",
+    "volume": null,
+    "pages": null,
+    "source": "crossref"
+   },
+   "doi": "10.1139/cjps-2016-0138"
+  },
+  "Hegedus 2023": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Assessing performance of empirical models for forecasting crop responses to variable fertilizer rates using on-farm precision experimentation",
+    "year": 2023,
+    "container": "Precision Agriculture",
+    "first_author": "Hegedus",
+    "volume": "24",
+    "pages": "677-704",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-022-09968-2"
+  },
+  "Hernandez 2008": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Estimating Uncertainty of Economically Optimum Fertilizer Rates",
+    "year": 2008,
+    "container": "Agronomy Journal",
+    "first_author": "Hernandez",
+    "volume": "100",
+    "pages": "1221-1229",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2007.0273"
+  },
+  "Holben 1986": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Characteristics of maximum-value composite images from temporal AVHRR data",
+    "year": 1986,
+    "container": "International Journal of Remote Sensing",
+    "first_author": "HOLBEN",
+    "volume": "7",
+    "pages": "1417-1434",
+    "source": "crossref"
+   },
+   "doi": "10.1080/01431168608948945"
+  },
+  "Holland 2010": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Derivation of a Variable Rate Nitrogen Application Model for In‐Season Fertilization of Corn",
+    "year": 2010,
+    "container": "Agronomy Journal",
+    "first_author": "Holland",
+    "volume": "102",
+    "pages": "1415-1424",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2010.0015"
+  },
+  "Hunt 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "High resolution wheat yield mapping using Sentinel-2",
+    "year": 2019,
+    "container": "Remote Sensing of Environment",
+    "first_author": "Hunt",
+    "volume": "233",
+    "pages": "111410",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.rse.2019.111410"
+  },
+  "Javadi 2022": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Clustering and Smoothing Pipeline for Management Zone Delineation Using Proximal and Remote Sensing",
+    "year": 2022,
+    "container": "Sensors",
+    "first_author": "Javadi",
+    "volume": "22",
+    "pages": "645",
+    "source": "crossref"
+   },
+   "doi": "10.3390/s22020645"
+  },
+  "Jaynes 2011": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Confidence bands for measured economically optimal nitrogen rates",
+    "year": 2011,
+    "container": "Precision Agriculture",
+    "first_author": "Jaynes",
+    "volume": "12",
+    "pages": "196-213",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-010-9168-3"
+  },
+  "Joernsgaard 2003": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Intra-field yield variation over crops and years",
+    "year": 2003,
+    "container": "European Journal of Agronomy",
+    "first_author": "Joernsgaard",
+    "volume": "19",
+    "pages": "23-33",
+    "source": "crossref"
+   },
+   "doi": "10.1016/S1161-0301(02)00016-3"
+  },
+  "Kakimoto 2022": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Causal forest approach for site-specific input management via on-farm precision experimentation",
+    "year": 2022,
+    "container": "Computers and Electronics in Agriculture",
+    "first_author": "Kakimoto",
+    "volume": "199",
+    "pages": "107164",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.compag.2022.107164"
+  },
+  "Khakbazan 2013": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "An economic study of controlled release urea and split applications of nitrogen as compared with non-coated urea under conventional and reduced tillage management",
+    "year": 2013,
+    "container": "Canadian Journal of Plant Science",
+    "first_author": "Khakbazan",
+    "volume": "93",
+    "pages": "523-534",
+    "source": "crossref"
+   },
+   "doi": "10.4141/cjps2012-107"
+  },
+  "Kharel 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Yield Monitor Data Cleaning is Essential for Accurate Corn Grain and Silage Yield Determination",
+    "year": 2019,
+    "container": "Agronomy Journal",
+    "first_author": "Kharel",
+    "volume": "111",
+    "pages": "509-516",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2018.05.0317"
+  },
+  "Khosla 2008": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "A synthesis of multi-disciplinary research in precision agriculture: site-specific management zones in the semi-arid western Great Plains of the USA",
+    "year": 2008,
+    "container": "Precision Agriculture",
+    "first_author": "Khosla",
+    "volume": "9",
+    "pages": "85-100",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-008-9057-1"
+  },
+  "Kindred 2015": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Exploring the spatial variation in the fertilizer-nitrogen requirement of wheat within fields",
+    "year": 2015,
+    "container": "The Journal of Agricultural Science",
+    "first_author": "KINDRED",
+    "volume": "153",
+    "pages": "25-41",
+    "source": "crossref"
+   },
+   "doi": "10.1017/S0021859613000919"
+  },
+  "Kitchen 2005": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Delineating productivity zones on claypan soil fields using apparent soil electrical conductivity",
+    "year": 2005,
+    "container": "Computers and Electronics in Agriculture",
+    "first_author": "Kitchen",
+    "volume": "46",
+    "pages": "285-308",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.compag.2004.11.012"
+  },
+  "Kitchen 2010": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Ground‐Based Canopy Reflectance Sensing for Variable‐Rate Nitrogen Corn Fertilization",
+    "year": 2010,
+    "container": "Agronomy Journal",
+    "first_author": "Kitchen",
+    "volume": "102",
+    "pages": "71-84",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2009.0114"
+  },
+  "Košánová 2025": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Assessment of yield stability patterns using sentinel-2 over a 7-year period",
+    "year": 2025,
+    "container": "Geocarto International",
+    "first_author": "Košánová",
+    "volume": "40",
+    "pages": null,
+    "source": "crossref"
+   },
+   "doi": "10.1080/10106049.2025.2532529"
+  },
+  "Kyveryga 2009": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Characterizing and Classifying Variability in Corn Yield Response to Nitrogen Fertilization on Subfield and Field Scales",
+    "year": 2009,
+    "container": "Agronomy Journal",
+    "first_author": "Kyveryga",
+    "volume": "101",
+    "pages": "269-277",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2008.0168"
+  },
+  "Kyveryga 2018": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "On‐Farm Replicated Strip Trials",
+    "year": 2018,
+    "container": "ASA, CSSA, and SSSA Books",
+    "first_author": "Kyveryga",
+    "volume": null,
+    "pages": "189-207",
+    "source": "crossref"
+   },
+   "doi": "10.2134/precisionagbasics.2016.0096"
+  },
+  "Lacoste 2022": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": false,
+    "author_ok": true,
+    "year_note": "online-first vs print year"
+   },
+   "record": {
+    "title": "On-Farm Experimentation to transform global agriculture",
+    "year": 2021,
+    "container": "Nature Food",
+    "first_author": "Lacoste",
+    "volume": "3",
+    "pages": "11-18",
+    "source": "crossref"
+   },
+   "doi": "10.1038/s43016-021-00424-4"
+  },
+  "Lafond 1994": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Effects of row spacing, seeding rate and nitrogen on yield of barley and wheat under zero-till management",
+    "year": 1994,
+    "container": "Canadian Journal of Plant Science",
+    "first_author": "Lafond",
+    "volume": "74",
+    "pages": "703-711",
+    "source": "crossref"
+   },
+   "doi": "10.4141/cjps94-127"
+  },
+  "Lakens 2018": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Equivalence Testing for Psychological Research: A Tutorial",
+    "year": 2018,
+    "container": "Advances in Methods and Practices in Psychological Science",
+    "first_author": "Lakens",
+    "volume": "1",
+    "pages": "259-269",
+    "source": "crossref"
+   },
+   "doi": "10.1177/2515245918770963"
+  },
+  "Lambert 2004": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "A Comparison of Four Spatial Regression Models for Yield Monitor Data: A Case Study from Argentina",
+    "year": 2004,
+    "container": "Precision Agriculture",
+    "first_author": "Lambert",
+    "volume": "5",
+    "pages": "579-600",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-004-6344-3"
+  },
+  "Lambert 2006": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Economic Analysis of Spatial‐Temporal Patterns in Corn and Soybean Response to Nitrogen and Phosphorus",
+    "year": 2006,
+    "container": "Agronomy Journal",
+    "first_author": "Lambert",
+    "volume": "98",
+    "pages": "43-54",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2005.0005"
+  },
+  "Lambert 2022": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Geographically weighted regression estimation of the linear response and plateau function",
+    "year": 2022,
+    "container": "Precision Agriculture",
+    "first_author": "Lambert",
+    "volume": "23",
+    "pages": "377-399",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-021-09841-8"
+  },
+  "Lark 1997": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Classification as a first step in the interpretation of temporal and spatial variation of crop yield",
+    "year": 1997,
+    "container": "Annals of Applied Biology",
+    "first_author": "LARK",
+    "volume": "130",
+    "pages": "111-121",
+    "source": "crossref"
+   },
+   "doi": "10.1111/j.1744-7348.1997.tb05787.x"
+  },
+  "Lark 2003": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "A Method to Investigate Within‐Field Variation of the Response of Combinable Crops to an Input",
+    "year": 2003,
+    "container": "Agronomy Journal",
+    "first_author": "Lark",
+    "volume": "95",
+    "pages": "1093-1104",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2003.1093"
+  },
+  "Lawes 2012": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "A Simple Method for the Analysis of On‐Farm Strip Trials",
+    "year": 2012,
+    "container": "Agronomy Journal",
+    "first_author": "Lawes",
+    "volume": "104",
+    "pages": "371-377",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2011.0155"
+  },
+  "Lee 2012": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Automated Yield Map Delay Identification Using Phase Correlation Methodology",
+    "year": 2012,
+    "container": "Transactions of the ASABE",
+    "first_author": "D. H. Lee",
+    "volume": "55",
+    "pages": "743-752",
+    "source": "crossref"
+   },
+   "doi": "10.13031/2013.41506"
+  },
+  "Lenoir 2024": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Advancing Blackmore’s methodology to delineate management zones from Sentinel 2 images",
+    "year": 2024,
+    "container": "Precision Agriculture",
+    "first_author": "Lenoir",
+    "volume": "25",
+    "pages": "1360-1385",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-024-10115-2"
+  },
+  "Leroux 2018": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "A general method to filter out defective spatial observations from yield mapping datasets",
+    "year": 2018,
+    "container": "Precision Agriculture",
+    "first_author": "Leroux",
+    "volume": "19",
+    "pages": "789-808",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-017-9555-0"
+  },
+  "Leroux 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "How to measure and report within-field variability: a review of common indicators and their sensitivity",
+    "year": 2019,
+    "container": "Precision Agriculture",
+    "first_author": "Leroux",
+    "volume": "20",
+    "pages": "562-590",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-018-9598-x"
+  },
+  "Li 2023": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "The economic performances of different trial designs in on-farm precision experimentation: a Monte Carlo evaluation",
+    "year": 2023,
+    "container": "Precision Agriculture",
+    "first_author": "Li",
+    "volume": "24",
+    "pages": "2500-2521",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-023-10050-8"
+  },
+  "Liu 2006": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Is Site‐Specific Yield Response Consistent over Time? Does It Pay?",
+    "year": 2006,
+    "container": "American Journal of Agricultural Economics",
+    "first_author": "Liu",
+    "volume": "88",
+    "pages": "471-483",
+    "source": "crossref"
+   },
+   "doi": "10.1111/j.1467-8276.2006.00872.x"
+  },
+  "Lory 2003": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Yield Goal versus Delta Yield for Predicting Fertilizer Nitrogen Need in Corn",
+    "year": 2003,
+    "container": "Agronomy Journal",
+    "first_author": "Lory",
+    "volume": "95",
+    "pages": "994-999",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2003.9940"
+  },
+  "Lowenberg-DeBoer 1997": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Economics of Site‐Specific Management in Agronomic Crops",
+    "year": 1997,
+    "container": "ASSA, CSSA and SSSA",
+    "first_author": "Lowenberg-DeBoer",
+    "volume": null,
+    "pages": "369",
+    "source": "openalex"
+   },
+   "doi": "10.2134/1997.stateofsitespecific.c16"
+  },
+  "Lowenberg-DeBoer 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Setting the Record Straight on Precision Agriculture Adoption",
+    "year": 2019,
+    "container": "Agronomy Journal",
+    "first_author": "Lowenberg-DeBoer",
+    "volume": "111",
+    "pages": "1552",
+    "source": "openalex"
+   },
+   "doi": "10.2134/agronj2018.12.0779"
+  },
+  "Lyle 2014": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Post-processing methods to eliminate erroneous grain yield measurements: review and directions for future development",
+    "year": 2014,
+    "container": "Precision Agriculture",
+    "first_author": "Lyle",
+    "volume": "15",
+    "pages": "377-402",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-013-9336-3"
+  },
+  "Maestrini 2018": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Drivers of within-field spatial and temporal variability of crop yield across the US Midwest",
+    "year": 2018,
+    "container": "Scientific Reports",
+    "first_author": "Maestrini",
+    "volume": "8",
+    "pages": null,
+    "source": "crossref"
+   },
+   "doi": "10.1038/s41598-018-32779-3"
+  },
+  "Maestrini 2021": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Subfield crop yields and temporal stability in thousands of US Midwest fields",
+    "year": 2021,
+    "container": "Precision Agriculture",
+    "first_author": "Maestrini",
+    "volume": "22",
+    "pages": "1749-1767",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-021-09810-1"
+  },
+  "Main-Knorn 2017": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Sen2Cor for Sentinel-2",
+    "year": 2017,
+    "container": "Image and Signal Processing for Remote Sensing XXIII",
+    "first_author": "Main-Knorn",
+    "volume": null,
+    "pages": "3",
+    "source": "crossref"
+   },
+   "doi": "10.1117/12.2278218"
+  },
+  "Malhi 2001": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Nitrogen fertilization management for no-till cereal production in the Canadian Great Plains: a review",
+    "year": 2001,
+    "container": "Soil and Tillage Research",
+    "first_author": "Malhi",
+    "volume": "60",
+    "pages": "101-122",
+    "source": "crossref"
+   },
+   "doi": "10.1016/S0167-1987(01)00176-3"
+  },
+  "Malhi 2007": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": false
+   },
+   "record": {
+    "title": "Comparative nitrogen response and economic evaluation for optimum yield of hybrid and open-pollinated canola",
+    "year": 2007,
+    "container": "Canadian Journal of Plant Science",
+    "first_author": "Mahli",
+    "volume": "87",
+    "pages": "449",
+    "source": "openalex"
+   },
+   "doi": "10.4141/P05-180",
+   "note": "first author spelled 'Mahli' in the OpenAlex record; title, journal, volume and year match; checked by hand"
+  },
+  "Mamo 2003": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Spatial and Temporal Variation in Economically Optimum Nitrogen Rate for Corn",
+    "year": 2003,
+    "container": "Agronomy Journal",
+    "first_author": "Mamo",
+    "volume": "95",
+    "pages": "958-964",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2003.9580"
+  },
+  "Mangin 2022": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Maximizing spring wheat productivity in the eastern Canadian Prairies: I. Yield, yield components, and lodging risk",
+    "year": 2022,
+    "container": "Agronomy Journal",
+    "first_author": "Mangin",
+    "volume": "114",
+    "pages": "1731-1751",
+    "source": "crossref"
+   },
+   "doi": "10.1002/agj2.21044"
+  },
+  "Mangin 2022a": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Maximizing spring wheat productivity in the eastern Canadian Prairies II. Grain nitrogen, grain protein, and nitrogen use",
+    "year": 2022,
+    "container": "Agronomy Journal",
+    "first_author": "Mangin",
+    "volume": "114",
+    "pages": "2389-2406",
+    "source": "crossref"
+   },
+   "doi": "10.1002/agj2.21080"
+  },
+  "Marchant 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Establishing the precision and robustness of farmers’ crop experiments",
+    "year": 2019,
+    "container": "Field Crops Research",
+    "first_author": "Marchant",
+    "volume": "230",
+    "pages": "31-45",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.fcr.2018.10.006"
+  },
+  "McKenzie 2005": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Fertilization, seeding date, and seeding rate for malting barley yield and quality in southern Alberta",
+    "year": 2005,
+    "container": "Canadian Journal of Plant Science",
+    "first_author": "McKenzie",
+    "volume": "85",
+    "pages": "603-614",
+    "source": "crossref"
+   },
+   "doi": "10.4141/P04-152"
+  },
+  "McKenzie 2007": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Controlled-release urea for winter wheat in southern Alberta",
+    "year": 2007,
+    "container": "Canadian Journal of Soil Science",
+    "first_author": "McKenzie",
+    "volume": "87",
+    "pages": "85-91",
+    "source": "crossref"
+   },
+   "doi": "10.4141/S06-055"
+  },
+  "McKenzie 2011": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Optimum seeding date and rate for irrigated cereal and oilseed crops in southern Alberta",
+    "year": 2011,
+    "container": "Canadian Journal of Plant Science",
+    "first_author": "McKenzie",
+    "volume": "91",
+    "pages": "293-303",
+    "source": "crossref"
+   },
+   "doi": "10.4141/CJPS10103"
+  },
+  "Mieno 2024": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Bias in economic evaluation of variable rate application based on geographically weighted regression models with misspecified functional form",
+    "year": 2024,
+    "container": "Journal of the Agricultural and Applied Economics Association",
+    "first_author": "Mieno",
+    "volume": "3",
+    "pages": "135-151",
+    "source": "crossref"
+   },
+   "doi": "10.1002/jaa2.102"
+  },
+  "Miguez 2022": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "How can we estimate optimum fertilizer rates with accuracy and precision?",
+    "year": 2022,
+    "container": "Agricultural &amp; Environmental Letters",
+    "first_author": "Miguez",
+    "volume": "7",
+    "pages": null,
+    "source": "crossref"
+   },
+   "doi": "10.1002/ael2.20075"
+  },
+  "Milne 2012": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Spatial multivariate classification of an arable field into compact management zones based on past crop yields",
+    "year": 2012,
+    "container": "Computers and Electronics in Agriculture",
+    "first_author": "Milne",
+    "volume": "80",
+    "pages": "17-30",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.compag.2011.10.007"
+  },
+  "Mkhabela 2011": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Crop yield forecasting on the Canadian Prairies using MODIS NDVI data",
+    "year": 2011,
+    "container": "Agricultural and Forest Meteorology",
+    "first_author": "Mkhabela",
+    "volume": "151",
+    "pages": "385-393",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.agrformet.2010.11.012"
+  },
+  "Mutanga 2004": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Narrow band vegetation indices overcome the saturation problem in biomass estimation",
+    "year": 2004,
+    "container": "International Journal of Remote Sensing",
+    "first_author": "Mutanga",
+    "volume": "25",
+    "pages": "3999-4014",
+    "source": "crossref"
+   },
+   "doi": "10.1080/01431160310001654923"
+  },
+  "O'Donovan 2011": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Seeding Rate, Nitrogen Rate, and Cultivar Effects on Malting Barley Production",
+    "year": 2011,
+    "container": "Agronomy Journal",
+    "first_author": "O'Donovan",
+    "volume": "103",
+    "pages": "709-716",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2010.0490"
+  },
+  "O'Donovan 2012": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Effect of seeding date and seeding rate on malting barley production in western Canada",
+    "year": 2012,
+    "container": "Canadian Journal of Plant Science",
+    "first_author": "O'Donovan",
+    "volume": "92",
+    "pages": "321-330",
+    "source": "crossref"
+   },
+   "doi": "10.4141/cjps2011-130"
+  },
+  "Paccioretti 2021": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Statistical models of yield in on‐farm precision experimentation",
+    "year": 2021,
+    "container": "Agronomy Journal",
+    "first_author": "Paccioretti",
+    "volume": "113",
+    "pages": "4916-4929",
+    "source": "crossref"
+   },
+   "doi": "10.1002/agj2.20833"
+  },
+  "Pannell 2006": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Flat Earth Economics: The Far-reaching Consequences of Flat Payoff Functions in Economic Decision Making",
+    "year": 2006,
+    "container": "Review of Agricultural Economics",
+    "first_author": "Pannell",
+    "volume": "28",
+    "pages": "553-566",
+    "source": "crossref"
+   },
+   "doi": "10.1111/j.1467-9353.2006.00322.x"
+  },
+  "Pannell 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "How flat is flat? Measuring payoff functions and the implications for site-specific crop management",
+    "year": 2019,
+    "container": "Computers and Electronics in Agriculture",
+    "first_author": "Pannell",
+    "volume": "162",
+    "pages": "459-465",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.compag.2019.04.011"
+  },
+  "Piepho 2011": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Statistical aspects of on-farm experimentation",
+    "year": 2011,
+    "container": "Crop &amp; Pasture Science",
+    "first_author": "Piepho",
+    "volume": "62",
+    "pages": "721-735",
+    "source": "crossref"
+   },
+   "doi": "10.1071/CP11175"
+  },
+  "Piepho 2018": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative treatment factor levels",
+    "year": 2018,
+    "container": "Journal of Agronomy and Crop Science",
+    "first_author": "Piepho",
+    "volume": "204",
+    "pages": "429-455",
+    "source": "crossref"
+   },
+   "doi": "10.1111/jac.12267"
+  },
+  "Piikki 2022": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Remote sensing and on-farm experiments for determining in-season nitrogen rates in winter wheat – Options for implementation, model accuracy and remaining challenges",
+    "year": 2022,
+    "container": "Field Crops Research",
+    "first_author": "Piikki",
+    "volume": "289",
+    "pages": "108742",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.fcr.2022.108742"
+  },
+  "Ping 2003": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Creating Spatially Contiguous Yield Classes for Site‐Specific Management",
+    "year": 2003,
+    "container": "Agronomy Journal",
+    "first_author": "Ping",
+    "volume": "95",
+    "pages": "1121-1131",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2003.1121"
+  },
+  "Puntel 2016": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Modeling Long-Term Corn Yield Response to Nitrogen Rate and Crop Rotation",
+    "year": 2016,
+    "container": "Frontiers in Plant Science",
+    "first_author": "Puntel",
+    "volume": "7",
+    "pages": null,
+    "source": "crossref"
+   },
+   "doi": "10.3389/fpls.2016.01630"
+  },
+  "Puntel 2024": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Leveraging digital agriculture for on-farm testing of technologies",
+    "year": 2024,
+    "container": "Frontiers in Agronomy",
+    "first_author": "Puntel",
+    "volume": "6",
+    "pages": null,
+    "source": "crossref"
+   },
+   "doi": "10.3389/fagro.2024.1234232"
+  },
+  "Rajsic 2008": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Do farmers waste fertilizer? A comparison of ex post optimal nitrogen rates and ex ante recommendations by model, site and year",
+    "year": 2008,
+    "container": "Agricultural Systems",
+    "first_author": "Rajsic",
+    "volume": "97",
+    "pages": "56-67",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.agsy.2007.12.001"
+  },
+  "Rakshit 2020": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Novel approach to the analysis of spatially-varying treatment effects in on-farm experiments",
+    "year": 2020,
+    "container": "Field Crops Research",
+    "first_author": "Rakshit",
+    "volume": "255",
+    "pages": "107783",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.fcr.2020.107783"
+  },
+  "Raun 2002": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Improving Nitrogen Use Efficiency in Cereal Grain Production with Optical Sensing and Variable Rate Application",
+    "year": 2002,
+    "container": "Agronomy Journal",
+    "first_author": "Raun",
+    "volume": "94",
+    "pages": "815-820",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2002.8150"
+  },
+  "Raun 2005": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Optical Sensor‐Based Algorithm for Crop Nitrogen Fertilization",
+    "year": 2005,
+    "container": "Communications in Soil Science and Plant Analysis",
+    "first_author": "Raun",
+    "volume": "36",
+    "pages": "2759-2781",
+    "source": "crossref"
+   },
+   "doi": "10.1080/00103620500303988"
+  },
+  "Read 1982": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "FACTORS AFFECTING FERTILIZER RESPONSE OF WHEAT IN SOUTHWESTERN SASKATCHEWAN",
+    "year": 1982,
+    "container": "Canadian Journal of Soil Science",
+    "first_author": "READ",
+    "volume": "62",
+    "pages": "577-586",
+    "source": "crossref"
+   },
+   "doi": "10.4141/cjss82-065"
+  },
+  "Scharf 2005": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Field‐Scale Variability in Optimal Nitrogen Fertilizer Rate for Corn",
+    "year": 2005,
+    "container": "Agronomy Journal",
+    "first_author": "Scharf",
+    "volume": "97",
+    "pages": "452-461",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2005.0452"
+  },
+  "Scharf 2006": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Spatially Variable Corn Yield is a Weak Predictor of Optimal Nitrogen Rate",
+    "year": 2006,
+    "container": "Soil Science Society of America Journal",
+    "first_author": "Scharf",
+    "volume": "70",
+    "pages": "2154-2160",
+    "source": "crossref"
+   },
+   "doi": "10.2136/sssaj2005.0244"
+  },
+  "Schepers 2004": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Appropriateness of Management Zones for Characterizing Spatial Variability of Soil Properties and Irrigated Corn Yields across Years",
+    "year": 2004,
+    "container": "Agronomy Journal",
+    "first_author": "Schepers",
+    "volume": "96",
+    "pages": "195-203",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2004.1950"
+  },
+  "Scudiero 2018": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Workflow to Establish Time-Specific Zones in Precision Agriculture by Spatiotemporal Integration of Plant and Soil Sensing Data",
+    "year": 2018,
+    "container": "Agronomy",
+    "first_author": "Scudiero",
+    "volume": "8",
+    "pages": "253",
+    "source": "crossref"
+   },
+   "doi": "10.3390/agronomy8110253"
+  },
+  "Simbahan 2004": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Screening Yield Monitor Data Improves Grain Yield Maps",
+    "year": 2004,
+    "container": "Agronomy Journal",
+    "first_author": "Simbahan",
+    "volume": "96",
+    "pages": "1091-1102",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2004.1091"
+  },
+  "Skakun 2022": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Cloud Mask Intercomparison eXercise (CMIX): An evaluation of cloud masking algorithms for Landsat 8 and Sentinel-2",
+    "year": 2022,
+    "container": "Remote Sensing of Environment",
+    "first_author": "Skakun",
+    "volume": "274",
+    "pages": "112990",
+    "source": "crossref"
+   },
+   "doi": "10.1016/j.rse.2022.112990"
+  },
+  "Sudduth 2007": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Yield Editor: Software for Removing Errors from Crop Yield Maps",
+    "year": 2007,
+    "container": "Agronomy Journal",
+    "first_author": "Sudduth",
+    "volume": "99",
+    "pages": "1471-1482",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2006.0326"
+  },
+  "Swinton 1998": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Evaluating the Profitability of Site‐Specific Farming",
+    "year": 1998,
+    "container": "Journal of Production Agriculture",
+    "first_author": "Swinton",
+    "volume": "11",
+    "pages": "439-446",
+    "source": "crossref"
+   },
+   "doi": "10.2134/jpa1998.0439"
+  },
+  "Tanaka 2023": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Toward an effective approach for on-farm experimentation: lessons learned from a case study of fertilizer application optimization in Japan",
+    "year": 2023,
+    "container": "Precision Agriculture",
+    "first_author": "Tanaka",
+    "volume": "24",
+    "pages": "2044-2060",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-023-10029-5"
+  },
+  "Tanaka 2026": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 0.92,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Advanced data analytics for on-farm experimentation: methods, challenges, and opportunities for modern agronomic decision making",
+    "year": 2026,
+    "container": "Plant Production Science",
+    "first_author": "Tanaka",
+    "volume": "29",
+    "pages": "271-292",
+    "source": "crossref"
+   },
+   "doi": "10.1080/1343943X.2026.2664854"
+  },
+  "Taylor 2007": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Establishing Management Classes for Broadacre Agricultural Production",
+    "year": 2007,
+    "container": "Agronomy Journal",
+    "first_author": "Taylor",
+    "volume": "99",
+    "pages": "1366-1376",
+    "source": "crossref"
+   },
+   "doi": "10.2134/agronj2007.0070"
+  },
+  "Trevisan 2021": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Spatial variability of crop responses to agronomic inputs in on-farm precision experimentation",
+    "year": 2021,
+    "container": "Precision Agriculture",
+    "first_author": "Trevisan",
+    "volume": "22",
+    "pages": "342-363",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-020-09720-8"
+  },
+  "Tucker 1979": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Red and photographic infrared linear combinations for monitoring vegetation",
+    "year": 1979,
+    "container": "Remote Sensing of Environment",
+    "first_author": "Tucker",
+    "volume": "8",
+    "pages": "127-150",
+    "source": "crossref"
+   },
+   "doi": "10.1016/0034-4257(79)90013-0"
+  },
+  "Tukey 1949": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Comparing Individual Means in the Analysis of Variance",
+    "year": 1949,
+    "container": "Biometrics",
+    "first_author": "Tukey",
+    "volume": "5",
+    "pages": "99",
+    "source": "crossref"
+   },
+   "doi": "10.2307/3001913"
+  },
+  "Vega 2019": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Protocol for automating error removal from yield maps",
+    "year": 2019,
+    "container": "Precision Agriculture",
+    "first_author": "Vega",
+    "volume": "20",
+    "pages": "1030-1044",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s11119-018-09632-8"
+  },
+  "Wang 2011": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Ckmeans.1d.dp: Optimal k-means Clustering in One Dimension by Dynamic Programming",
+    "year": 2011,
+    "container": "The R Journal",
+    "first_author": "Wang",
+    "volume": "3",
+    "pages": "29",
+    "source": "crossref"
+   },
+   "doi": "10.32614/RJ-2011-015"
+  },
+  "Yang 2014": {
+   "status": "verified",
+   "comparison": {
+    "title_sim": 1.0,
+    "year_ok": true,
+    "author_ok": true
+   },
+   "record": {
+    "title": "Up to 32 % yield increase with optimized spatial patterns of canola plant establishment in western Canada",
+    "year": 2014,
+    "container": "Agronomy for Sustainable Development",
+    "first_author": "Yang",
+    "volume": "34",
+    "pages": "793-801",
+    "source": "crossref"
+   },
+   "doi": "10.1007/s13593-014-0218-5"
+  }
+ }
+}
