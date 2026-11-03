@@ -752,49 +752,85 @@ def show_fig(fig):
 
 
 # ================================================================================================ sidebar
+# The six steps: (done key, number, name, subtitle, tab icon). The tab labels, the step cards (brand.step_header), the
+# checklist of the sidebar and the count in the title bar are all drawn from this list.
+STEPS = (("design", 1, "Trial", "Project, trial files, the tested inputs and their status quo", ":material/grid_on:"),
+         ("zones", 2, "NDVI & zones", "Multi-year NDVI (fetched, your GeoTIFFs or a ready map) or your own zone map",
+          ":material/satellite_alt:"),
+         ("prices", 3, "Prices", "Crop sale price, input purchase prices, VR cost and the sensitivity range",
+          ":material/payments:"),
+         ("join", 4, "Join", "Plots × yield × zones → the analysis units", ":material/join_inner:"),
+         ("analysis", 5, "Economics", "Response by zone, optima, VR vs flat, cross-fit and bootstrap",
+          ":material/query_stats:"),
+         ("report", 6, "Report", "The PDF report, the prescription shapefile and the tables", ":material/description:"))
+STEP_BOX = {}                   # number -> the placeholder of that step card's heading (drawn again at the end of the run)
+
+
 def draw_steps():
-    """The step checklist of the sidebar (drawn at the start of the run and again at its end, when this run's
-    buttons have acted)."""
+    """The step checklist of the sidebar, the open project in the title bar and the headings of the step cards (drawn
+    at the start of the run and again at its end, when this run's buttons have acted)."""
     with steps_box.container():
-        for key_, lab in (("design", "1 Trial"), ("zones", "2 NDVI & zones"), ("prices", "3 Prices"), ("join", "4 Join"),
-                          ("analysis", "5 Economics"), ("report", "6 Report")):
-            st.markdown(f"{'✅' if done(key_) else '⬜'} {lab}")
+        st.html(brand.steps_html([(num, f"{num} · {name}", done(key_)) for key_, num, name, _, _ in STEPS]))
     if ss().get("workdir"):
         folder_box.caption(f"Folder: `{ss()['workdir']}`")
+    meta = " · ".join(str(x) for x in (cfg.get("producer"), cfg.get("field"), cfg.get("crop"), cfg.get("year")) if x)
+    with project_box.container():
+        st.html(brand.project_html(cfg.get("name") or "New project", meta, sum(done(s_[0]) for s_ in STEPS), len(STEPS)))
+    for key_, num, name, sub, _ in STEPS:
+        if num in STEP_BOX:
+            with STEP_BOX[num].container():
+                brand.step_header(num, name, sub, done=done(key_))
+
+
+def step_card(num):
+    """The heading of step card <num>: a placeholder, filled now and again at the end of the run (draw_steps)."""
+    key_, _, name, sub, _ = STEPS[num - 1]
+    STEP_BOX[num] = st.empty()
+    with STEP_BOX[num].container():
+        brand.step_header(num, name, sub, done=done(key_))
 
 
 with st.sidebar:
-    st.markdown(f"**{brand.LONG_NAME}**")
-    st.caption(brand.TAGLINE)
-    if st.button("New project", width="stretch"):
+    if st.button("New project", icon=":material/add:", width="stretch"):
         new_project()
         st.rerun()
     projs = P.list_projects(WORKSPACE)
     if projs:
-        st.markdown("**Saved projects**")
+        st.subheader("Saved projects", anchor=False)
         labels = [f"{p['name']} · {str(p['saved'])[:10]}" for p in projs]
         i = st.selectbox("Project", range(len(projs)), format_func=lambda j: labels[j], label_visibility="collapsed")
-        if st.button("Open", width="stretch"):
+        if st.button("Open", icon=":material/folder_open:", width="stretch"):
             rec = P.load(projs[i]["dir"])
             new_project()
             ss()["cfg"] = rec["config"]
             ss()["workdir"] = projs[i]["dir"]
             ss()["pid"] = os.path.basename(projs[i]["dir"])
             st.rerun()
-    st.markdown("**Steps**")
+    st.subheader("Steps", anchor=False)
     steps_box = st.empty()          # drawn now, and drawn again at the end of the run, after this run's buttons acted
     folder_box = st.empty()
 
     st.caption(brand.footer_caption())
+
+# the navy title bar (the app_header key is its CSS hook, app/brand.py): the white logo, the name with its version,
+# the long name and tagline, and the open project with the steps done (a placeholder, drawn again at the end of the run)
+with st.container(key="app_header"):
+    h1, h2, h3 = st.columns([1.4, 3.8, 1.6], vertical_alignment="center")
+    with h1:
+        logo = brand.LOGO_H_REV if os.path.exists(brand.LOGO_H_REV) else brand.LOGO_H
+        if os.path.exists(logo):
+            st.image(logo, width=200)
+    with h2:
+        brand.brand_block()
+    with h3:
+        project_box = st.empty()
 draw_steps()
 
-st.title(brand.LONG_NAME)
-st.caption("Cleaned yield maps + trial design + as-applied + multi-year NDVI zones + prices → does variable rate pay "
-           "against a flat rate?")
-tabs = st.tabs(["1 Trial", "2 NDVI & zones", "3 Prices", "4 Join", "5 Economics", "6 Report"])
+tabs = st.tabs([f"{icon} {num} {name}" for _, num, name, _, icon in STEPS])
 
 # ================================================================================================ 1 trial
-with tabs[0]:
+with tabs[0], st.container(border=True, key="ocvr_step_1"):      # the key is the CSS hook of the step card (brand)
+    step_card(1)
     c = st.columns([2, 2, 2, 1.2, 1])
     cfg["name"] = c[0].text_input("Project name", cfg.get("name") or "", key=k("name"), placeholder="Trial 29")
     cfg["producer"] = c[1].text_input("Producer", cfg.get("producer") or "", key=k("producer"))
@@ -804,101 +840,103 @@ with tabs[0]:
     cfg["year"] = int(c[4].number_input("Year", 2000, 2100, int(cfg.get("year") or dt.date.today().year), key=k("year")))
     cfg["prices"]["crop"] = cfg["crop"]
 
-    st.subheader("Files")
-    st.caption("The yield map must already be cleaned (OCCD or the yield-map-cleaning pipeline). Shapefiles: give the .shp "
-               "path, a .zip, or upload the .shp/.shx/.dbf/.prj together.")
-    design = file_field("Trial design (plots + border) *", "design", ["shp", "shx", "dbf", "prj", "cpg", "zip", "geojson", "gpkg", "kml", "kmz"])
-    yfile = file_field("Cleaned yield points *", "yield", ["shp", "shx", "dbf", "prj", "cpg", "zip", "gpkg", "parquet"])
-    file_field("Field boundary (optional; else the trial area)", "boundary", ["shp", "shx", "dbf", "prj", "zip", "geojson", "gpkg", "kml", "kmz"])
+    with st.container(border=True, key="block_files"):  # a nested card (brand)
+        st.subheader("Files")
+        st.caption("The yield map must already be cleaned (OCCD or the yield-map-cleaning pipeline). Shapefiles: give the .shp "
+                   "path, a .zip, or upload the .shp/.shx/.dbf/.prj together.")
+        design = file_field("Trial design (plots + border) *", "design", ["shp", "shx", "dbf", "prj", "cpg", "zip", "geojson", "gpkg", "kml", "kmz"])
+        yfile = file_field("Cleaned yield points *", "yield", ["shp", "shx", "dbf", "prj", "cpg", "zip", "gpkg", "parquet"])
+        file_field("Field boundary (optional; else the trial area)", "boundary", ["shp", "shx", "dbf", "prj", "zip", "geojson", "gpkg", "kml", "kmz"])
 
-    st.subheader("Tested inputs")
-    st.caption("Choose what the trial tested. **Status quo** = the grower's usual flat rate (ask; never infer). Rate basis "
-               "*product* = the trial rates are lb of product (seed, urea as applied); *nutrient* = lb of N. An input "
-               "whose rates are not in any design file (the urea of a seed x urea trial logged only by the drill) can "
-               "take its design rates **from its as-applied map**: give the map, then choose "
-               f"'{FROM_APPLIED_LABEL}' as its rate column.")
-    cur_inputs = cfg["prices"]["inputs"] or [dict(INPUT_PRESETS["seed"])]
-    stash = cfg.setdefault("ui", {}).setdefault("input_stash", {})
-    cur_names = [i.get("name") for i in cur_inputs]
-    n_prods = [p_ for p_ in EP.PRODUCTS if p_ not in ("seed", "other")]
-    ready_ok = all((i.get("name") == "seed" and i.get("product") == "seed")
-                   or (i.get("name") == "urea" and i.get("product") in n_prods) for i in cur_inputs)
-    if not ready_ok:
-        # e.g. a seed input stored with product 'urea 46-0-0', or a urea input with product 'other': the ready rows
-        # would silently change the product (and the price per lb N), so the free editor shows the project as it is
-        mode0 = "Other inputs"
-    elif cur_names == ["seed"]:
-        mode0 = "Seed"
-    elif cur_names == ["urea"]:
-        mode0 = "Urea"
-    elif sorted(cur_names) == ["seed", "urea"]:
-        mode0 = "Seed and urea"
-    else:
-        mode0 = "Other inputs"
-    mode = st.radio("What was tested?", INPUT_MODES, index=INPUT_MODES.index(mode0), horizontal=True,
-                    key=k("in_mode"),
-                    help="Seed and urea are analysed the same way, each with its own price, status quo and as-applied "
-                         "map; with both, each is analysed with the other as a control. 'Other inputs' opens the "
-                         "free editor (any input name, up to 3 inputs).")
-    new_inputs = []
-    if mode != "Other inputs":
-        # the ready rows: seed and urea keep their names (the as-applied maps, columns and results are keyed by
-        # them); their price, status quo, product and units come from the project, from the stash of an input taken
-        # out earlier, or from the defaults
-        want = {"Seed": ["seed"], "Urea": ["urea"], "Seed and urea": ["seed", "urea"]}[mode]
-        if mode == "Seed and urea" and cur_names == ["urea", "seed"]:
-            want = ["urea", "seed"]          # keep the order of a project that had urea first (its main design column)
-        for nm in want:
-            old = (next((i for i in cur_inputs if i.get("name") == nm), None) or (stash.get(nm) or {}).get("input")
-                   or dict(INPUT_PRESETS[nm]))
+    with st.container(key="panel_inputs"):             # what was tested decides the step: a tinted panel (brand)
+        st.subheader("Tested inputs")
+        st.caption("Choose what the trial tested. **Status quo** = the grower's usual flat rate (ask; never infer). Rate basis "
+                   "*product* = the trial rates are lb of product (seed, urea as applied); *nutrient* = lb of N. An input "
+                   "whose rates are not in any design file (the urea of a seed x urea trial logged only by the drill) can "
+                   "take its design rates **from its as-applied map**: give the map, then choose "
+                   f"'{FROM_APPLIED_LABEL}' as its rate column.")
+        cur_inputs = cfg["prices"]["inputs"] or [dict(INPUT_PRESETS["seed"])]
+        stash = cfg.setdefault("ui", {}).setdefault("input_stash", {})
+        cur_names = [i.get("name") for i in cur_inputs]
+        n_prods = [p_ for p_ in EP.PRODUCTS if p_ not in ("seed", "other")]
+        ready_ok = all((i.get("name") == "seed" and i.get("product") == "seed")
+                       or (i.get("name") == "urea" and i.get("product") in n_prods) for i in cur_inputs)
+        if not ready_ok:
+            # e.g. a seed input stored with product 'urea 46-0-0', or a urea input with product 'other': the ready rows
+            # would silently change the product (and the price per lb N), so the free editor shows the project as it is
+            mode0 = "Other inputs"
+        elif cur_names == ["seed"]:
+            mode0 = "Seed"
+        elif cur_names == ["urea"]:
+            mode0 = "Urea"
+        elif sorted(cur_names) == ["seed", "urea"]:
+            mode0 = "Seed and urea"
+        else:
+            mode0 = "Other inputs"
+        mode = st.radio("What was tested?", INPUT_MODES, index=INPUT_MODES.index(mode0), horizontal=True,
+                        key=k("in_mode"),
+                        help="Seed and urea are analysed the same way, each with its own price, status quo and as-applied "
+                             "map; with both, each is analysed with the other as a control. 'Other inputs' opens the "
+                             "free editor (any input name, up to 3 inputs).")
+        new_inputs = []
+        if mode != "Other inputs":
+            # the ready rows: seed and urea keep their names (the as-applied maps, columns and results are keyed by
+            # them); their price, status quo, product and units come from the project, from the stash of an input taken
+            # out earlier, or from the defaults
+            want = {"Seed": ["seed"], "Urea": ["urea"], "Seed and urea": ["seed", "urea"]}[mode]
+            if mode == "Seed and urea" and cur_names == ["urea", "seed"]:
+                want = ["urea", "seed"]          # keep the order of a project that had urea first (its main design column)
+            for nm in want:
+                old = (next((i for i in cur_inputs if i.get("name") == nm), None) or (stash.get(nm) or {}).get("input")
+                       or dict(INPUT_PRESETS[nm]))
+                c = st.columns([1.3, 1.6, 1.1, 1.0, 1.2])
+                c[0].markdown(f"**{nm.capitalize()}**")
+                c[0].caption("tested input")
+                if nm == "seed":
+                    prod = "seed"
+                    c[1].text_input("Product", "seed", disabled=True, key=k("pre_seed_prod"))
+                else:
+                    prods = [p_ for p_ in EP.PRODUCTS if p_ not in ("seed", "other")]
+                    p0 = old.get("product") if old.get("product") in prods else "urea 46-0-0"
+                    prod = c[1].selectbox("Product", prods, index=prods.index(p0), key=k(f"pre_{nm}_prod"),
+                                          help="The nitrogen product applied; urea 46-0-0 by default.")
+                basis = c[2].selectbox("Rate basis", ["product", "nutrient"],
+                                       index=["product", "nutrient"].index(old.get("rate_basis", "product")),
+                                       key=k(f"pre_{nm}_basis"),
+                                       help="product = the rates are lb of product per acre; nutrient = lb of N per acre.")
+                unit = c[3].selectbox("Rate unit", list(EP.RATE_UNITS),
+                                      index=list(EP.RATE_UNITS).index(old.get("rate_unit")) if old.get("rate_unit") in EP.RATE_UNITS else 0,
+                                      key=k(f"pre_{nm}_unit"),
+                                      help="The unit of the design rates, the as-applied map and the status quo; kg/ha is "
+                                           "converted to lb/ac (x 0.8922) on loading, and the results are in lb/ac.")
+                sqv = c[4].number_input("Status quo rate", 0.0, 5000.0,
+                                        value=None if old.get("status_quo") is None else float(old["status_quo"]),
+                                        step=1.0, key=k(f"pre_{nm}_sq"), placeholder="ask the grower")
+                new_inputs.append(dict(name=nm, product=prod, rate_basis=basis, rate_unit=unit,
+                                       status_quo=None if sqv is None else float(sqv),
+                                       price_per_lb_product=float(old.get("price_per_lb_product") or 0.0)))
+        n_in = len(new_inputs) if mode != "Other inputs" else int(
+            st.number_input("How many inputs were tested?", 1, 3, len(cur_inputs), key=k("n_inputs")))
+        for j in ([] if mode != "Other inputs" else range(n_in)):
+            old = cur_inputs[j] if j < len(cur_inputs) else dict(name=f"input{j + 1}", product="urea 46-0-0", rate_basis="product",
+                                                                 rate_unit="lb/ac", status_quo=None, price_per_lb_product=0.49)
             c = st.columns([1.3, 1.6, 1.1, 1.0, 1.2])
-            c[0].markdown(f"**{nm.capitalize()}**")
-            c[0].caption("tested input")
-            if nm == "seed":
-                prod = "seed"
-                c[1].text_input("Product", "seed", disabled=True, key=k("pre_seed_prod"))
-            else:
-                prods = [p_ for p_ in EP.PRODUCTS if p_ not in ("seed", "other")]
-                p0 = old.get("product") if old.get("product") in prods else "urea 46-0-0"
-                prod = c[1].selectbox("Product", prods, index=prods.index(p0), key=k(f"pre_{nm}_prod"),
-                                      help="The nitrogen product applied; urea 46-0-0 by default.")
-            basis = c[2].selectbox("Rate basis", ["product", "nutrient"],
-                                   index=["product", "nutrient"].index(old.get("rate_basis", "product")),
-                                   key=k(f"pre_{nm}_basis"),
-                                   help="product = the rates are lb of product per acre; nutrient = lb of N per acre.")
+            nm = c[0].text_input("Input", old["name"], key=k(f"in_name_{j}")).strip() or f"input{j + 1}"
+            prods = list(EP.PRODUCTS)
+            prod = c[1].selectbox("Product", prods, index=prods.index(old["product"]) if old["product"] in prods else len(prods) - 1,
+                                  key=k(f"in_prod_{j}"))
+            basis = c[2].selectbox("Rate basis", ["product", "nutrient"], index=["product", "nutrient"].index(old.get("rate_basis", "product")),
+                                   key=k(f"in_basis_{j}"))
             unit = c[3].selectbox("Rate unit", list(EP.RATE_UNITS),
                                   index=list(EP.RATE_UNITS).index(old.get("rate_unit")) if old.get("rate_unit") in EP.RATE_UNITS else 0,
-                                  key=k(f"pre_{nm}_unit"),
+                                  key=k(f"in_unit_{j}"),
                                   help="The unit of the design rates, the as-applied map and the status quo; kg/ha is "
                                        "converted to lb/ac (x 0.8922) on loading, and the results are in lb/ac.")
-            sqv = c[4].number_input("Status quo rate", 0.0, 5000.0,
-                                    value=None if old.get("status_quo") is None else float(old["status_quo"]),
-                                    step=1.0, key=k(f"pre_{nm}_sq"), placeholder="ask the grower")
+            sqv = c[4].number_input("Status quo rate", 0.0, 5000.0, value=None if old.get("status_quo") is None else float(old["status_quo"]),
+                                    step=1.0, key=k(f"in_sq_{j}"), placeholder="ask the grower")
             new_inputs.append(dict(name=nm, product=prod, rate_basis=basis, rate_unit=unit,
                                    status_quo=None if sqv is None else float(sqv),
                                    price_per_lb_product=float(old.get("price_per_lb_product") or 0.0)))
-    n_in = len(new_inputs) if mode != "Other inputs" else int(
-        st.number_input("How many inputs were tested?", 1, 3, len(cur_inputs), key=k("n_inputs")))
-    for j in ([] if mode != "Other inputs" else range(n_in)):
-        old = cur_inputs[j] if j < len(cur_inputs) else dict(name=f"input{j + 1}", product="urea 46-0-0", rate_basis="product",
-                                                             rate_unit="lb/ac", status_quo=None, price_per_lb_product=0.49)
-        c = st.columns([1.3, 1.6, 1.1, 1.0, 1.2])
-        nm = c[0].text_input("Input", old["name"], key=k(f"in_name_{j}")).strip() or f"input{j + 1}"
-        prods = list(EP.PRODUCTS)
-        prod = c[1].selectbox("Product", prods, index=prods.index(old["product"]) if old["product"] in prods else len(prods) - 1,
-                              key=k(f"in_prod_{j}"))
-        basis = c[2].selectbox("Rate basis", ["product", "nutrient"], index=["product", "nutrient"].index(old.get("rate_basis", "product")),
-                               key=k(f"in_basis_{j}"))
-        unit = c[3].selectbox("Rate unit", list(EP.RATE_UNITS),
-                              index=list(EP.RATE_UNITS).index(old.get("rate_unit")) if old.get("rate_unit") in EP.RATE_UNITS else 0,
-                              key=k(f"in_unit_{j}"),
-                              help="The unit of the design rates, the as-applied map and the status quo; kg/ha is "
-                                   "converted to lb/ac (x 0.8922) on loading, and the results are in lb/ac.")
-        sqv = c[4].number_input("Status quo rate", 0.0, 5000.0, value=None if old.get("status_quo") is None else float(old["status_quo"]),
-                                step=1.0, key=k(f"in_sq_{j}"), placeholder="ask the grower")
-        new_inputs.append(dict(name=nm, product=prod, rate_basis=basis, rate_unit=unit,
-                               status_quo=None if sqv is None else float(sqv),
-                               price_per_lb_product=float(old.get("price_per_lb_product") or 0.0)))
     # Input names key the widgets, the as-applied files and columns, and the units' target_/rate_ columns, so two
     # inputs with the same name (case-blind, as on a Windows disk) are refused, and so are names that are not plain
     # identifiers (see INPUT_NAME_RE). Names sharing their first 10 characters are allowed: that rule refused valid
@@ -1062,7 +1100,8 @@ with tabs[0]:
         # explicit '(none)' is a choice), so that choice is not hidden in a collapsed box
         need_rate = bool(j) and (not done("design")
                                  or (cfg["columns"].get("extra_design_rate") or {}).get(inp["name"]) is None)
-        with st.expander(f"As-applied map for **{inp['name']}**" + (" and its design" if j else ""), expanded=need_rate):
+        with st.container(key=f"colmap_ap_{j}"), st.expander(       # the container key is the CSS hook (brand)
+                f"As-applied map for **{inp['name']}**" + (" and its design" if j else ""), expanded=need_rate):
             ap = file_field(f"As-applied ({inp['name']})", f"asapplied:{inp['name']}",
                             ["shp", "shx", "dbf", "prj", "cpg", "zip", "gpkg", "parquet"])
             if ap:
@@ -1173,7 +1212,7 @@ with tabs[0]:
 
     if design:
         cols, ddf = peek_columns(design)
-        with st.expander("Design columns", expanded=not done("design")):
+        with st.container(key="colmap_design"), st.expander("Design columns", expanded=not done("design")):
             cc = st.columns(5)
             # The Treatment picker is drawn (into its own column) before the Rate picker: the Rate picker offers
             # '(none)' only when a treatment column is set, and reading the treatment of the previous run gave a
@@ -1225,7 +1264,7 @@ with tabs[0]:
                 cfg["columns"]["block"] = col_select("Block", cols, "block", cfg["columns"].get("block"), ddf, src=design)
     if yfile:
         cols, ydf = peek_columns(yfile)
-        with st.expander("Yield columns", expanded=not done("design")):
+        with st.container(key="colmap_yield"), st.expander("Yield columns", expanded=not done("design")):
             cc = st.columns(5)
             for i, (role, lab) in enumerate((("yield", "Yield (dry, bu/ac)"), ("heading", "Heading"), ("distance", "Distance"),
                                              ("swath", "Swath width"), ("machine", "Machine"))):
@@ -1364,7 +1403,8 @@ with tabs[0]:
         show_fig(RP.fig_design(s))
 
 # ================================================================================================ 2 NDVI & zones
-with tabs[1]:
+with tabs[1], st.container(border=True, key="ocvr_step_2"):
+    step_card(2)
     if not done("design"):
         st.info("Load the trial in step 1 first.")
     else:
@@ -1375,7 +1415,8 @@ with tabs[1]:
                "map": "A multi-year NDVI map (raster or polygons with an NDVI column)",
                "zonemap": "A zone map I already have"}
         cur = "zonemap" if z.get("source") == "map" else n.get("source", "fetch")
-        src = st.radio("Source of the zones", list(SRC), format_func=SRC.get, index=list(SRC).index(cur), key=k("ndvi_src"))
+        with st.container(key="panel_zone_src"):      # the source decides the step: a tinted panel (brand)
+            src = st.radio("Source of the zones", list(SRC), format_func=SRC.get, index=list(SRC).index(cur), key=k("ndvi_src"))
         zone_block = None       # why "Build zones" cannot run now
         if src == "zonemap":
             z["source"] = "map"
@@ -1548,7 +1589,7 @@ with tabs[1]:
                           "above), then build the zones.")
 
         if n["source"] in ("fetch", "files"):
-            with st.expander("Crop history (which seasons count)", expanded=True):
+            with st.container(key="colmap_crop_history"), st.expander("Crop history (which seasons count)", expanded=True):
                 yrs = sorted(set(int(y) for y in (n.get("years") or [])) | {int(y) for y in (n.get("crop_history") or {})})
                 ch = pd.DataFrame({"year": yrs, "crop": [(n.get("crop_history") or {}).get(str(y)) or (n.get("crop_history") or {}).get(y) or "" for y in yrs]})
                 ch = st.data_editor(ch, key=k("croph"), hide_index=True, width="stretch",
@@ -1564,12 +1605,13 @@ with tabs[1]:
                 st.caption("NDVI is scaled differently by crop and stage; zones are best built from seasons of the same crop "
                            "(at least 3; Blackmore 2000, Georgi et al. 2018).")
         if z["source"] == "ndvi":
-            c = st.columns(4)
-            z["k"] = int(c[0].slider("Zones", 2, 5, int(z.get("k", 3)), key=k("zk")))
-            z["method"] = c[1].selectbox("Breaks", ["quantile", "kmeans"], index=["quantile", "kmeans"].index(z.get("method", "quantile")),
-                                         key=k("zm"), help="quantile = equal-area classes (default); kmeans = natural breaks")
-            z["min_patch_ha"] = float(c[2].number_input("Smallest patch (ha)", 0.0, 10.0, float(z.get("min_patch_ha", 0.5)), 0.1, key=k("zp")))
-            z["smooth"] = int(c[3].selectbox("Smoothing (pixels)", [1, 3, 5], index=[1, 3, 5].index(int(z.get("smooth", 3))), key=k("zs")))
+            with st.container(key="panel_zones"):     # how the zones are cut: a tinted panel (brand)
+                c = st.columns(4)
+                z["k"] = int(c[0].slider("Zones", 2, 5, int(z.get("k", 3)), key=k("zk")))
+                z["method"] = c[1].selectbox("Breaks", ["quantile", "kmeans"], index=["quantile", "kmeans"].index(z.get("method", "quantile")),
+                                             key=k("zm"), help="quantile = equal-area classes (default); kmeans = natural breaks")
+                z["min_patch_ha"] = float(c[2].number_input("Smallest patch (ha)", 0.0, 10.0, float(z.get("min_patch_ha", 0.5)), 0.1, key=k("zp")))
+                z["smooth"] = int(c[3].selectbox("Smoothing (pixels)", [1, 3, 5], index=[1, 3, 5].index(int(z.get("smooth", 3))), key=k("zs")))
         if zone_block:
             st.warning(zone_block)
         if done("zones") and fp_changed("zones_fp", zones_payload(cfg)):
@@ -1621,33 +1663,36 @@ with tabs[1]:
                 st.dataframe(pd.DataFrame(N["layers"]), width="stretch", hide_index=True)
 
 # ================================================================================================ 3 prices
-with tabs[2]:
+with tabs[2], st.container(border=True, key="ocvr_step_3"):
+    step_card(3)
     pr = cfg["prices"]
-    c = st.columns(4)
-    unit = c[0].radio("Crop price in", ["$/bu", "$/t"], horizontal=True, key=k("punit"))
-    if unit == "$/bu":
-        pr["crop_price_bu"] = float(c[1].number_input("Crop sale price ($/bu)", 0.0, 100.0, float(pr.get("crop_price_bu", 9.25)), 0.05, key=k("pc")))
-    else:
-        t = c[1].number_input("Crop sale price ($/t)", 0.0, 3000.0, float(EP.per_bu_to_per_tonne(pr.get("crop_price_bu", 9.25), cfg["crop"])), 1.0, key=k("pct"))
-        pr["crop_price_bu"] = EP.per_tonne_to_per_bu(t, cfg["crop"])
-        c[1].caption(f"= {pr['crop_price_bu']:.2f} $/bu at {EP.bushel_lb(cfg['crop']):.0f} lb/bu")
-    pr["currency"] = c[2].text_input("Currency", pr.get("currency", "CAD"), key=k("cur"))
-    pr["vr_cost_ac"] = float(c[3].number_input("VR cost ($/ac)", 0.0, 100.0, float(pr.get("vr_cost_ac", 0.0)), 0.5, key=k("vrc"),
-                                               help="Extra cost of running VR (prescription, imagery, agronomy); subtracted from VR gains only."))
-    st.subheader("Input purchase prices")
-    for inp in pr["inputs"]:
-        c = st.columns([2, 2, 3])
-        inp["price_per_lb_product"] = float(c[0].number_input(f"{inp['name']} ($/lb of {inp['product']})", 0.0, 50.0,
-                                                              float(inp.get("price_per_lb_product") or 0.0), 0.005, format="%.3f",
-                                                              key=k(f"pi_{inp['name']}")))
-        ip = EP.InputPrice(**{kk: inp.get(kk) for kk in EP.InputPrice.__dataclass_fields__ if kk in inp})
-        # the price is per lb (of product, or of nutrient) whatever the unit the rates were typed in: a kg/ha design
-        # is converted to lb/ac on loading, so '$/kg' here was wrong by the unit factor
-        c[1].metric("per rate unit", f"{ip.price_per_rate_unit:.3f} $/lb" + (" N" if inp.get("rate_basis") == "nutrient" else "")
-                    + (" (rates in kg/ha are converted to lb/ac)" if inp.get("rate_unit") == "kg/ha" else ""))
-        if inp["product"] != "seed":
-            c[2].caption(f"{EP.PRODUCTS[inp['product']]['label']}: {100 * ip.fraction:.0f} % nutrient. Rate basis "
-                         f"*{inp['rate_basis']}* → {'price per lb nutrient = price per lb product / fraction' if inp['rate_basis'] == 'nutrient' else 'price per lb of product'}.")
+    with st.container(key="panel_prices"):             # the crop price and the VR cost: a tinted panel (brand)
+        c = st.columns(4)
+        unit = c[0].radio("Crop price in", ["$/bu", "$/t"], horizontal=True, key=k("punit"))
+        if unit == "$/bu":
+            pr["crop_price_bu"] = float(c[1].number_input("Crop sale price ($/bu)", 0.0, 100.0, float(pr.get("crop_price_bu", 9.25)), 0.05, key=k("pc")))
+        else:
+            t = c[1].number_input("Crop sale price ($/t)", 0.0, 3000.0, float(EP.per_bu_to_per_tonne(pr.get("crop_price_bu", 9.25), cfg["crop"])), 1.0, key=k("pct"))
+            pr["crop_price_bu"] = EP.per_tonne_to_per_bu(t, cfg["crop"])
+            c[1].caption(f"= {pr['crop_price_bu']:.2f} $/bu at {EP.bushel_lb(cfg['crop']):.0f} lb/bu")
+        pr["currency"] = c[2].text_input("Currency", pr.get("currency", "CAD"), key=k("cur"))
+        pr["vr_cost_ac"] = float(c[3].number_input("VR cost ($/ac)", 0.0, 100.0, float(pr.get("vr_cost_ac", 0.0)), 0.5, key=k("vrc"),
+                                                   help="Extra cost of running VR (prescription, imagery, agronomy); subtracted from VR gains only."))
+    with st.container(border=True, key="block_input_prices"):
+        st.subheader("Input purchase prices")
+        for inp in pr["inputs"]:
+            c = st.columns([2, 2, 3])
+            inp["price_per_lb_product"] = float(c[0].number_input(f"{inp['name']} ($/lb of {inp['product']})", 0.0, 50.0,
+                                                                  float(inp.get("price_per_lb_product") or 0.0), 0.005, format="%.3f",
+                                                                  key=k(f"pi_{inp['name']}")))
+            ip = EP.InputPrice(**{kk: inp.get(kk) for kk in EP.InputPrice.__dataclass_fields__ if kk in inp})
+            # the price is per lb (of product, or of nutrient) whatever the unit the rates were typed in: a kg/ha design
+            # is converted to lb/ac on loading, so '$/kg' here was wrong by the unit factor
+            c[1].metric("per rate unit", f"{ip.price_per_rate_unit:.3f} $/lb" + (" N" if inp.get("rate_basis") == "nutrient" else "")
+                        + (" (rates in kg/ha are converted to lb/ac)" if inp.get("rate_unit") == "kg/ha" else ""))
+            if inp["product"] != "seed":
+                c[2].caption(f"{EP.PRODUCTS[inp['product']]['label']}: {100 * ip.fraction:.0f} % nutrient. Rate basis "
+                             f"*{inp['rate_basis']}* → {'price per lb nutrient = price per lb product / fraction' if inp['rate_basis'] == 'nutrient' else 'price per lb of product'}.")
     # Minimum 5 %: a 0 % range makes every cell of the price grid the same price pair, and the sensitivity heat map
     # then cannot be built (pivot on duplicate entries), which failed the whole "Run the economics".
     rng0 = int(abs(float((pr.get("input_price_range_pct") or [-30, 30])[1])))
@@ -1659,29 +1704,31 @@ with tabs[2]:
     st.caption("Reference: central-Alberta 2026 prices (CWRS wheat C$8.90/bu, certified seed C$0.225/lb) in "
                "`GIT/OFPE_DIFM/reference/prices_alberta_2026.md`. Net return = crop price × yield − input price × rate "
                "(partial budget).")
-    if st.button("Save prices", key=k("btn_prices")):
+    if st.button("Save prices", type="primary", key=k("btn_prices")):
         mark("prices")
         save()
         st.success("Saved." + (" The economics was run with other prices: run it again in step 5."
                                if done("analysis") and analysis_stamp(cfg) != (ss().get("an_stamp") or {}).get("app") else ""))
 
 # ================================================================================================ 4 join
-with tabs[3]:
+with tabs[3], st.container(border=True, key="ocvr_step_4"):
+    step_card(4)
     if not done("zones"):
         st.info("Build the zones in step 2 first (or use one zone: choose a zone map with a single zone).")
     else:
         s = state()
         j = cfg["join"]
-        c = st.columns(6)
-        j["end_trim_m"] = float(c[0].number_input("Trim plot ends (m)", 0.0, 50.0, float(j["end_trim_m"]), 1.0, key=k("jend")))
-        j["side_trim_m"] = float(c[1].number_input("Trim plot sides (m)", 0.0, 20.0, float(j["side_trim_m"]), 0.5, key=k("jside")))
-        j["min_share"] = float(c[2].number_input("Min share in one plot", 0.0, 1.0, float(j["min_share"]), 0.05, key=k("jshare"),
-                                                 help="0.95 = DIFM rule; 0 = clip and weight by area"))
-        j["min_obs"] = int(c[3].number_input("Min observations / unit", 1, 200, int(j["min_obs"]), key=k("jobs")))
-        j["min_area_m2"] = float(c[4].number_input("Min unit area (m²)", 0.0, 5000.0, float(j["min_area_m2"]), 10.0, key=k("jarea")))
-        j["rate_source"] = c[5].selectbox("Rate in the models", ["applied", "target"], index=["applied", "target"].index(j["rate_source"]), key=k("jrate"))
-        j["unit"] = st.radio("Analysis unit", ["plot_zone", "plot"], format_func={"plot_zone": "plot × zone (default)", "plot": "whole plot"}.get,
-                             index=["plot_zone", "plot"].index(j.get("unit", "plot_zone")), horizontal=True, key=k("junit"))
+        with st.container(key="panel_join"):           # the settings of the join: a tinted panel (brand)
+            c = st.columns(6)
+            j["end_trim_m"] = float(c[0].number_input("Trim plot ends (m)", 0.0, 50.0, float(j["end_trim_m"]), 1.0, key=k("jend")))
+            j["side_trim_m"] = float(c[1].number_input("Trim plot sides (m)", 0.0, 20.0, float(j["side_trim_m"]), 0.5, key=k("jside")))
+            j["min_share"] = float(c[2].number_input("Min share in one plot", 0.0, 1.0, float(j["min_share"]), 0.05, key=k("jshare"),
+                                                     help="0.95 = DIFM rule; 0 = clip and weight by area"))
+            j["min_obs"] = int(c[3].number_input("Min observations / unit", 1, 200, int(j["min_obs"]), key=k("jobs")))
+            j["min_area_m2"] = float(c[4].number_input("Min unit area (m²)", 0.0, 5000.0, float(j["min_area_m2"]), 10.0, key=k("jarea")))
+            j["rate_source"] = c[5].selectbox("Rate in the models", ["applied", "target"], index=["applied", "target"].index(j["rate_source"]), key=k("jrate"))
+            j["unit"] = st.radio("Analysis unit", ["plot_zone", "plot"], format_func={"plot_zone": "plot × zone (default)", "plot": "whole plot"}.get,
+                                 index=["plot_zone", "plot"].index(j.get("unit", "plot_zone")), horizontal=True, key=k("junit"))
         # The units hold target_/rate_ columns per input name and the applied rates of the as-applied maps: when the
         # inputs, an as-applied map, the yield file/columns or these settings change after the join, the units (and
         # everything computed from them) are out of date, so the join must be run again.
@@ -1750,30 +1797,32 @@ with tabs[3]:
             st.dataframe(s.units.round(3), width="stretch", hide_index=True, height=260)
 
 # ================================================================================================ 5 economics
-with tabs[4]:
+with tabs[4], st.container(border=True, key="ocvr_step_5"):
+    step_card(5)
     if not done("join"):
         st.info("Run the join in step 4 first.")
     else:
         s = state()
         m = cfg["model"]
-        c = st.columns(6)
-        m["form"] = c[0].selectbox("Response form", ["quadratic", "qplateau", "linear"],
-                                   index=["quadratic", "qplateau", "linear"].index(m.get("form", "quadratic")), key=k("mform"),
-                                   help="The other form is always reported as a sensitivity.")
-        m["machine"] = c[1].checkbox("Combine effect", bool(m.get("machine", True)), key=k("mmach"))
-        m["spatial"] = c[2].checkbox("Trend surface", bool(m.get("spatial", True)), key=k("msp"))
-        m["B"] = int(c[3].number_input("Bootstrap", 0, 2000, int(m.get("B", 500)), 50, key=k("mB"),
-                                       help="Plot resamples for the intervals of the optima and gains; 500 by default, 1,000 for a report to publish "
-                                            "(Hernandez & Mulla 2008; Jaynes 2011)."))
-        m["R"] = int(c[4].number_input("Cross-fit repeats", 0, 500, int(m.get("R", 30)), 10, key=k("mR")))
-        m["min_units_zone"] = int(c[5].number_input("Min units per zone", 5, 300, int(m.get("min_units_zone", 20)), 5, key=k("mminu")))
-        m["min_gain_ac"] = float(st.number_input("Minimum worthwhile gain ($/ac, cross-fitted: VR vs flat after the VR cost, "
-                                                 "and best flat rate vs status quo)", 0.0, 100.0,
-                                                 float(m.get("min_gain_ac", 3.0)), 0.5, key=k("mgain"),
-                                                 help="Below this the recommendation stays flat rate, or at the status quo: "
-                                                      "payoffs are flat near the optimum (Pannell 2006) and small gains "
-                                                      "appear by chance. The mean cross-fitted gain must reach it and be "
-                                                      "positive in at least 70 % of the repeated splits."))
+        with st.container(key="panel_model"):          # the settings of the run: a tinted panel (brand)
+            c = st.columns(6)
+            m["form"] = c[0].selectbox("Response form", ["quadratic", "qplateau", "linear"],
+                                       index=["quadratic", "qplateau", "linear"].index(m.get("form", "quadratic")), key=k("mform"),
+                                       help="The other form is always reported as a sensitivity.")
+            m["machine"] = c[1].checkbox("Combine effect", bool(m.get("machine", True)), key=k("mmach"))
+            m["spatial"] = c[2].checkbox("Trend surface", bool(m.get("spatial", True)), key=k("msp"))
+            m["B"] = int(c[3].number_input("Bootstrap", 0, 2000, int(m.get("B", 500)), 50, key=k("mB"),
+                                           help="Plot resamples for the intervals of the optima and gains; 500 by default, 1,000 for a report to publish "
+                                                "(Hernandez & Mulla 2008; Jaynes 2011)."))
+            m["R"] = int(c[4].number_input("Cross-fit repeats", 0, 500, int(m.get("R", 30)), 10, key=k("mR")))
+            m["min_units_zone"] = int(c[5].number_input("Min units per zone", 5, 300, int(m.get("min_units_zone", 20)), 5, key=k("mminu")))
+            m["min_gain_ac"] = float(st.number_input("Minimum worthwhile gain ($/ac, cross-fitted: VR vs flat after the VR cost, "
+                                                     "and best flat rate vs status quo)", 0.0, 100.0,
+                                                     float(m.get("min_gain_ac", 3.0)), 0.5, key=k("mgain"),
+                                                     help="Below this the recommendation stays flat rate, or at the status quo: "
+                                                          "payoffs are flat near the optimum (Pannell 2006) and small gains "
+                                                          "appear by chance. The mean cross-fitted gain must reach it and be "
+                                                          "positive in at least 70 % of the repeated splits."))
         missing = [i["name"] for i in cfg["prices"]["inputs"] if not i.get("price_per_lb_product")]
         if missing:
             st.warning(f"Enter the price of {', '.join(missing)} in step 3.")
@@ -1809,102 +1858,105 @@ with tabs[4]:
             for name, R in s.res["analysis"].items():
                 if name.startswith("_") or not isinstance(R, dict):
                     continue
-                st.subheader(f"{name.capitalize()}")
-                if R.get("skipped"):        # e.g. a treatment-only design: no rate response, the comparison still runs
-                    why_ = R["skipped"].split(": ", 1)[1] if R["skipped"].lower().startswith(f"{name.lower()}: ") else R["skipped"]
-                    st.info(f"No rate response or economics for {name}: {why_}")
-                    continue
-                v = R["verdict"]
-                box = {"vr": st.success, "lean_vr": st.warning, "flat": st.info}[v["level"]]
-                box(f"**{v['text']}**\n\n" + "\n".join(f"- {r}" for r in v["reasons"]))
-                if v.get("borderline"):
-                    # A cross-fitted gain sits within 1 $/ac of the minimum worthwhile gain, so that call could flip
-                    # with a slightly different price or threshold. verdict['borderline_on'] says WHICH comparison:
-                    # a generic "either is defensible" under a clear VR verdict read as if VR vs flat were a toss-up
-                    # when only best flat vs status quo was close. Results saved before borderline_on existed are
-                    # taken as the VR comparison (the only one flagged then).
-                    on = v.get("borderline_on")
-                    on = list(on) if on is not None else ["VR vs flat"]
-                    notes_ = []
-                    if "VR vs flat" in on:
-                        notes_.append("VR vs the best flat rate: the cross-fitted gain of VR is within 1 $/ac of the "
-                                      "minimum worthwhile gain, so VR and the flat rate are economically equivalent; "
-                                      "either is defensible")
-                    if "best flat vs status quo" in on:
-                        notes_.append("best flat rate vs the status quo: the cross-fitted gain of moving to the best "
-                                      "flat rate is within 1 $/ac of the minimum worthwhile gain, so keeping the status "
-                                      "quo is about as good" + ("; the VR call above is not borderline"
-                                                                if "VR vs flat" not in on and v["level"] != "flat" else ""))
-                    if notes_:
-                        st.caption("Borderline call on " + "; and on ".join(notes_) + ".")
-                d, pl = R["decision"], R.get("pooled") or R["decision"]
-                cf = (R.get("crossfit") or {}).get("gain_vr_vs_uniform")
-                c = st.columns(5)
-                if R.get("status_quo") is not None:
-                    c[0].metric("Status quo", f"{R['status_quo']:g}")
-                # the gain over the status quo on the summary basis (main model, field zone acres), the number the
-                # verdict and the PDF summary print; the single-curve model's own gain (plot zone mix) could differ
-                # in size and even in sign from the verdict next to it
-                bf = (R.get("summary_basis") or {}).get("best_flat") or {}
-                bf_rate = bf.get("rate", pl["r_uniform"])
-                bf_gain = bf.get("gain_vs_sq")
-                c[1].metric("Best flat rate", f"{bf_rate:.0f}",
-                            f"{bf_gain:+.2f} $/ac vs SQ" if R.get("status_quo") is not None and bf_gain is not None else None,
-                            help="Valued on the main model over the field's zone acres, as in the verdict and the PDF.")
-                c[2].metric("Analysis zones", len(d["r_zone"]))
-                if R.get("single_zone"):
-                    c[3].metric("VR vs flat (in-sample)", "n/a", help="One analysis zone: there is no VR strategy.")
-                else:
-                    c[3].metric("VR vs flat (in-sample)", f"{d['gain_vr_vs_uniform']:+.2f} $/ac")
-                if cf and not R.get("single_zone"):
-                    c[4].metric("VR vs flat (cross-fitted)", f"{cf['mean']:+.2f} $/ac", f"{100 * cf['share_positive']:.0f} % splits > 0", delta_color="off")
-                def edge(z):
-                    return " (edge of the trial range)" if (d.get("corner") or {}).get(z) else ""
-                if R.get("single_zone") or len(d["r_zone"]) <= 1:
-                    # one analysis zone: the pooled fit is keyed None, which printed 'zone None: 128'
-                    z1, r1 = next(iter(d["r_zone"].items()), (None, d.get("r_uniform")))
-                    if r1 is not None:
-                        st.caption(f"Single analysis zone: optimum {r1:.0f}" + edge(z1))
-                else:
-                    st.caption("Zone optima: " + " · ".join(f"zone {z}: {r:.0f}" + edge(z) for z, r in d["r_zone"].items()))
-                sq_txt = f"{R['status_quo']:g} " if R.get("status_quo") is not None else ""
-                if d.get("sq_too_far"):
-                    st.caption(f"Status quo: {sq_txt}lies more than 25 % of the trial range outside the "
-                               "tested rates, so no gain over it is computed (the curve cannot be trusted that far).")
-                elif d.get("sq_extrapolated"):
-                    st.caption(f"Status quo: {sq_txt}lies outside the tested rates; its yield is "
-                               + sq_extrap_text(R, d) + ", so gains over it are less certain.")
-                for mn in R.get("model_notes") or []:
-                    st.caption("Model: " + mn)
-                for zn in R.get("zone_notes") or []:
-                    st.caption("Zone support: " + zn)
-                F = getattr(s, "figs", {}) or {}
-                cA, cB = st.columns(2)
-                for col_, key_ in ((cA, f"response_{name}"), (cB, f"economics_{name}")):
-                    if F.get(key_) and os.path.exists(F[key_]):
-                        col_.image(F[key_])
-                with st.expander("Per zone, model tests, functional form, prices, NDVI prescription, realised trial"):
-                    st.dataframe(pd.DataFrame(d["per_zone"]).round(2), width="stretch", hide_index=True)
-                    st.dataframe(pd.DataFrame(R["table"]).round(2), width="stretch", hide_index=True)
-                    st.json({k_: v_["tests"] for k_, v_ in R["models"].items()}, expanded=False)
-                    if R.get("forms"):
-                        st.dataframe(pd.DataFrame({f: {kk: vv for kk, vv in v_.items() if kk in ("basis", "r_flat", "gain_flat_vs_sq", "r_zone", "gain_vr_vs_flat")}
-                                                   for f, v_ in R["forms"].items()}).T, width="stretch")
-                    for key_ in (f"prices_{name}", f"ndvi_rx_{name}", f"rx_{name}"):
+                with st.container(border=True, key=f"block_result_{name}"):   # a nested card (brand)
+                    st.subheader(f"{name.capitalize()}")
+                    if R.get("skipped"):        # e.g. a treatment-only design: no rate response, the comparison still runs
+                        why_ = R["skipped"].split(": ", 1)[1] if R["skipped"].lower().startswith(f"{name.lower()}: ") else R["skipped"]
+                        st.info(f"No rate response or economics for {name}: {why_}")
+                        continue
+                    v = R["verdict"]
+                    box = {"vr": st.success, "lean_vr": st.warning, "flat": st.info}[v["level"]]
+                    box(f"**{v['text']}**\n\n" + "\n".join(f"- {r}" for r in v["reasons"]))
+                    if v.get("borderline"):
+                        # A cross-fitted gain sits within 1 $/ac of the minimum worthwhile gain, so that call could flip
+                        # with a slightly different price or threshold. verdict['borderline_on'] says WHICH comparison:
+                        # a generic "either is defensible" under a clear VR verdict read as if VR vs flat were a toss-up
+                        # when only best flat vs status quo was close. Results saved before borderline_on existed are
+                        # taken as the VR comparison (the only one flagged then).
+                        on = v.get("borderline_on")
+                        on = list(on) if on is not None else ["VR vs flat"]
+                        notes_ = []
+                        if "VR vs flat" in on:
+                            notes_.append("VR vs the best flat rate: the cross-fitted gain of VR is within 1 $/ac of the "
+                                          "minimum worthwhile gain, so VR and the flat rate are economically equivalent; "
+                                          "either is defensible")
+                        if "best flat vs status quo" in on:
+                            notes_.append("best flat rate vs the status quo: the cross-fitted gain of moving to the best "
+                                          "flat rate is within 1 $/ac of the minimum worthwhile gain, so keeping the status "
+                                          "quo is about as good" + ("; the VR call above is not borderline"
+                                                                    if "VR vs flat" not in on and v["level"] != "flat" else ""))
+                        if notes_:
+                            st.caption("Borderline call on " + "; and on ".join(notes_) + ".")
+                    d, pl = R["decision"], R.get("pooled") or R["decision"]
+                    cf = (R.get("crossfit") or {}).get("gain_vr_vs_uniform")
+                    c = st.columns(5)
+                    if R.get("status_quo") is not None:
+                        c[0].metric("Status quo", f"{R['status_quo']:g}")
+                    # the gain over the status quo on the summary basis (main model, field zone acres), the number the
+                    # verdict and the PDF summary print; the single-curve model's own gain (plot zone mix) could differ
+                    # in size and even in sign from the verdict next to it
+                    bf = (R.get("summary_basis") or {}).get("best_flat") or {}
+                    bf_rate = bf.get("rate", pl["r_uniform"])
+                    bf_gain = bf.get("gain_vs_sq")
+                    c[1].metric("Best flat rate", f"{bf_rate:.0f}",
+                                f"{bf_gain:+.2f} $/ac vs SQ" if R.get("status_quo") is not None and bf_gain is not None else None,
+                                help="Valued on the main model over the field's zone acres, as in the verdict and the PDF.")
+                    c[2].metric("Analysis zones", len(d["r_zone"]))
+                    if R.get("single_zone"):
+                        c[3].metric("VR vs flat (in-sample)", "n/a", help="One analysis zone: there is no VR strategy.")
+                    else:
+                        c[3].metric("VR vs flat (in-sample)", f"{d['gain_vr_vs_uniform']:+.2f} $/ac")
+                    if cf and not R.get("single_zone"):
+                        c[4].metric("VR vs flat (cross-fitted)", f"{cf['mean']:+.2f} $/ac", f"{100 * cf['share_positive']:.0f} % splits > 0", delta_color="off")
+                    def edge(z):
+                        return " (edge of the trial range)" if (d.get("corner") or {}).get(z) else ""
+                    if R.get("single_zone") or len(d["r_zone"]) <= 1:
+                        # one analysis zone: the pooled fit is keyed None, which printed 'zone None: 128'
+                        z1, r1 = next(iter(d["r_zone"].items()), (None, d.get("r_uniform")))
+                        if r1 is not None:
+                            st.caption(f"Single analysis zone: optimum {r1:.0f}" + edge(z1))
+                    else:
+                        st.caption("Zone optima: " + " · ".join(f"zone {z}: {r:.0f}" + edge(z) for z, r in d["r_zone"].items()))
+                    sq_txt = f"{R['status_quo']:g} " if R.get("status_quo") is not None else ""
+                    if d.get("sq_too_far"):
+                        st.caption(f"Status quo: {sq_txt}lies more than 25 % of the trial range outside the "
+                                   "tested rates, so no gain over it is computed (the curve cannot be trusted that far).")
+                    elif d.get("sq_extrapolated"):
+                        st.caption(f"Status quo: {sq_txt}lies outside the tested rates; its yield is "
+                                   + sq_extrap_text(R, d) + ", so gains over it are less certain.")
+                    for mn in R.get("model_notes") or []:
+                        st.caption("Model: " + mn)
+                    for zn in R.get("zone_notes") or []:
+                        st.caption("Zone support: " + zn)
+                    F = getattr(s, "figs", {}) or {}
+                    cA, cB = st.columns(2)
+                    for col_, key_ in ((cA, f"response_{name}"), (cB, f"economics_{name}")):
                         if F.get(key_) and os.path.exists(F[key_]):
-                            st.image(F[key_])
-                    st.markdown("**Realised trial economics (same units)**")
-                    st.json(R["realised"]["summary"], expanded=False)
+                            col_.image(F[key_])
+                    with st.expander("Per zone, model tests, functional form, prices, NDVI prescription, realised trial"):
+                        st.dataframe(pd.DataFrame(d["per_zone"]).round(2), width="stretch", hide_index=True)
+                        st.dataframe(pd.DataFrame(R["table"]).round(2), width="stretch", hide_index=True)
+                        st.json({k_: v_["tests"] for k_, v_ in R["models"].items()}, expanded=False)
+                        if R.get("forms"):
+                            st.dataframe(pd.DataFrame({f: {kk: vv for kk, vv in v_.items() if kk in ("basis", "r_flat", "gain_flat_vs_sq", "r_zone", "gain_vr_vs_flat")}
+                                                       for f, v_ in R["forms"].items()}).T, width="stretch")
+                        for key_ in (f"prices_{name}", f"ndvi_rx_{name}", f"rx_{name}"):
+                            if F.get(key_) and os.path.exists(F[key_]):
+                                st.image(F[key_])
+                        st.markdown("**Realised trial economics (same units)**")
+                        st.json(R["realised"]["summary"], expanded=False)
             T = s.res["analysis"].get("_treatments")
             if T:
-                st.subheader("Treatment comparison")
-                st.dataframe(pd.DataFrame(T["table"]).round(2), width="stretch", hide_index=True)
-                for var in ("yield", "net_return"):
-                    if T.get(var) and "p_treatment" in T[var]:
-                        st.caption(f"{var}: treatment p = {T[var]['p_treatment']:.3f}")
+                with st.container(border=True, key="block_treatments"):
+                    st.subheader("Treatment comparison")
+                    st.dataframe(pd.DataFrame(T["table"]).round(2), width="stretch", hide_index=True)
+                    for var in ("yield", "net_return"):
+                        if T.get(var) and "p_treatment" in T[var]:
+                            st.caption(f"{var}: treatment p = {T[var]['p_treatment']:.3f}")
 
 # ================================================================================================ 6 report
-with tabs[5]:
+with tabs[5], st.container(border=True, key="ocvr_step_6"):
+    step_card(6)
     if not done("analysis"):
         st.info("Run the economics in step 5 first.")
     else:
@@ -1927,12 +1979,14 @@ with tabs[5]:
         with stale_box.container():
             show_stale("report")
         out = s.out
-        c = st.columns(5)
+        # the downloads side by side at their own width (they wrap to a second line in a narrow window)
+        row = st.container(horizontal=True, gap="small")
         # only a report built from the current results (the economics re-run clears report_path and step 6)
         rp = getattr(s, "report_path", None) if done("report") else None
         if rp and os.path.exists(rp):
             with open(rp, "rb") as f:
-                c[0].download_button("Report (PDF)", f.read(), os.path.basename(rp), "application/pdf")
+                row.download_button("Report (PDF)", f.read(), os.path.basename(rp), "application/pdf", type="primary",
+                                    icon=":material/picture_as_pdf:")
         # the shapefile parts (not the .gpkg) plus zones_rx_fields.csv: dBASE cuts field names to 10 characters and
         # the engine makes them unique with index suffixes (Flat_input, Flat_inpu1), so without that key in the zip
         # nobody could tell which Flat_ field belongs to which input and a wrong flat rate could reach the controller
@@ -1943,18 +1997,19 @@ with tabs[5]:
             with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z_:
                 for p in shp:
                     z_.write(p, os.path.basename(p))
-            c[1].download_button("Prescription (zones_rx.zip)", buf.getvalue(), f"{cfg.get('name') or 'field'}_zones_rx.zip", "application/zip",
-                                 help="Zone polygons (WGS 84) with, per input, Rx_ = the zone optimum, Flat_ = the "
-                                      "recommended flat rate and Zan_ = the analysis zone. Shapefile field names hold "
-                                      "at most 10 characters, so they are cut and, when two cut names clash, "
-                                      "numbered (Flat_input, Flat_inpu1): zones_rx_fields.csv in the zip says which "
-                                      "field belongs to which input and what it holds.")
-        for i, (fn, lab, mime) in enumerate((("units.gpkg", "Units (GeoPackage)", "application/geopackage+sqlite3"),
-                                              ("units.csv", "Units (CSV)", "text/csv"), ("results.json", "Results (JSON)", "application/json"))):
+            row.download_button("Prescription (zones_rx.zip)", buf.getvalue(), f"{cfg.get('name') or 'field'}_zones_rx.zip", "application/zip",
+                                type="primary", icon=":material/download:",
+                                help="Zone polygons (WGS 84) with, per input, Rx_ = the zone optimum, Flat_ = the "
+                                     "recommended flat rate and Zan_ = the analysis zone. Shapefile field names hold "
+                                     "at most 10 characters, so they are cut and, when two cut names clash, "
+                                     "numbered (Flat_input, Flat_inpu1): zones_rx_fields.csv in the zip says which "
+                                     "field belongs to which input and what it holds.")
+        for fn, lab, mime in (("units.gpkg", "Units (GeoPackage)", "application/geopackage+sqlite3"),
+                              ("units.csv", "Units (CSV)", "text/csv"), ("results.json", "Results (JSON)", "application/json")):
             p = os.path.join(out, fn)
             if os.path.exists(p):
                 with open(p, "rb") as f:
-                    c[2 + i].download_button(lab, f.read(), fn, mime)
+                    row.download_button(lab, f.read(), fn, mime, icon=":material/download:")
         st.caption(f"Everything is in `{out}`.")
 
 
