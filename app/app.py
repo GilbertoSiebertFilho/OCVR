@@ -745,6 +745,13 @@ def sq_extrap_text(R, d):
     return "extended linearly with the slope of the curve at the nearest edge of the tested rates (never below 0)"
 
 
+def md_text(t):
+    """Text for a Markdown element (info box, caption): Streamlit reads a pair of '$' as LaTeX, so a verdict reason
+    with two '$/ac' ('+8.61 of the +18.15 $/ac gain ... credits +9.54 $/ac') printed the words between them as a
+    formula."""
+    return str(t).replace("$", "\\$")
+
+
 def show_fig(fig):
     st.pyplot(fig, clear_figure=True)
     import matplotlib.pyplot as plt
@@ -1701,7 +1708,7 @@ with tabs[2], st.container(border=True, key="ocvr_step_3"):
     pr["source"] = st.text_input("Source of the prices", pr.get("source", ""), key=k("psrc"),
                                  placeholder="e.g. given by the grower, elevator bid 2026-10-01")
     pr["as_of"] = st.text_input("As of", pr.get("as_of", "") or dt.date.today().isoformat(), key=k("pasof"))
-    st.caption("Reference: central-Alberta 2026 prices (CWRS wheat C$8.90/bu, certified seed C$0.225/lb) in "
+    st.caption("Reference: central-Alberta 2026 prices (CWRS wheat C\\$8.90/bu, certified seed C\\$0.225/lb) in "
                "`GIT/OFPE_DIFM/reference/prices_alberta_2026.md`. Net return = crop price × yield − input price × rate "
                "(partial budget).")
     if st.button("Save prices", type="primary", key=k("btn_prices")):
@@ -1862,11 +1869,11 @@ with tabs[4], st.container(border=True, key="ocvr_step_5"):
                     st.subheader(f"{name.capitalize()}")
                     if R.get("skipped"):        # e.g. a treatment-only design: no rate response, the comparison still runs
                         why_ = R["skipped"].split(": ", 1)[1] if R["skipped"].lower().startswith(f"{name.lower()}: ") else R["skipped"]
-                        st.info(f"No rate response or economics for {name}: {why_}")
+                        st.info(md_text(f"No rate response or economics for {name}: {why_}"))
                         continue
                     v = R["verdict"]
                     box = {"vr": st.success, "lean_vr": st.warning, "flat": st.info}[v["level"]]
-                    box(f"**{v['text']}**\n\n" + "\n".join(f"- {r}" for r in v["reasons"]))
+                    box(f"**{md_text(v['text'])}**\n\n" + "\n".join(f"- {md_text(r)}" for r in v["reasons"]))
                     if v.get("borderline"):
                         # A cross-fitted gain sits within 1 $/ac of the minimum worthwhile gain, so that call could flip
                         # with a slightly different price or threshold. verdict['borderline_on'] says WHICH comparison:
@@ -1886,7 +1893,7 @@ with tabs[4], st.container(border=True, key="ocvr_step_5"):
                                           "quo is about as good" + ("; the VR call above is not borderline"
                                                                     if "VR vs flat" not in on and v["level"] != "flat" else ""))
                         if notes_:
-                            st.caption("Borderline call on " + "; and on ".join(notes_) + ".")
+                            st.caption(md_text("Borderline call on " + "; and on ".join(notes_) + "."))
                     d, pl = R["decision"], R.get("pooled") or R["decision"]
                     cf = (R.get("crossfit") or {}).get("gain_vr_vs_uniform")
                     c = st.columns(5)
@@ -1922,12 +1929,12 @@ with tabs[4], st.container(border=True, key="ocvr_step_5"):
                         st.caption(f"Status quo: {sq_txt}lies more than 25 % of the trial range outside the "
                                    "tested rates, so no gain over it is computed (the curve cannot be trusted that far).")
                     elif d.get("sq_extrapolated"):
-                        st.caption(f"Status quo: {sq_txt}lies outside the tested rates; its yield is "
-                                   + sq_extrap_text(R, d) + ", so gains over it are less certain.")
+                        st.caption(md_text(f"Status quo: {sq_txt}lies outside the tested rates; its yield is "
+                                           + sq_extrap_text(R, d) + ", so gains over it are less certain."))
                     for mn in R.get("model_notes") or []:
-                        st.caption("Model: " + mn)
+                        st.caption(md_text("Model: " + mn))
                     for zn in R.get("zone_notes") or []:
-                        st.caption("Zone support: " + zn)
+                        st.caption(md_text("Zone support: " + zn))
                     F = getattr(s, "figs", {}) or {}
                     cA, cB = st.columns(2)
                     for col_, key_ in ((cA, f"response_{name}"), (cB, f"economics_{name}")):
